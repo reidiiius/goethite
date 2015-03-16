@@ -87,35 +87,48 @@ var clave = map[string]string{
 	"k1j56y7": "____ AuUr NpSn ____ TiHg FeFe HgTi ____ SnNp UrAu ____ ____ ",
 	"k2j56y7": "NpCu ____ ____ FePu HgHg PuFe SnTi ____ CuNp PbAu ____ ____ "}
 
+func fn(tuner string) string {
+	return (clave[tuner][25:60] + clave[tuner][0:25])
+}
+func cn(tuner string) string {
+	return (clave[tuner])
+}
+func gn(tuner string) string {
+	return (clave[tuner][35:60] + clave[tuner][0:35])
+}
+func dn(tuner string) string {
+	return (clave[tuner][10:60] + clave[tuner][0:10])
+}
+func an(tuner string) string {
+	return (clave[tuner][45:60] + clave[tuner][0:45])
+}
+func en(tuner string) string {
+	return (clave[tuner][20:60] + clave[tuner][0:20])
+}
+func bn(tuner string) string {
+	return (clave[tuner][55:60] + clave[tuner][0:55])
+}
+
 func main() {
 	p := fmt.Println
 
-	p("\nn0")
-	p(clave["n0"][25:60] + clave["n0"][0:25])
-	p(clave["n0"])
-	p(clave["n0"][35:60] + clave["n0"][0:35])
-	p(clave["n0"][10:60] + clave["n0"][0:10])
-	p(clave["n0"][45:60] + clave["n0"][0:45])
-	p(clave["n0"][20:60] + clave["n0"][0:20])
-	p(clave["n0"][55:60] + clave["n0"][0:55])
+	p("\n" + "k6")
+	p(fn("k6"))
+	p(cn("k6"))
+	p(gn("k6"))
+	p(dn("k6"))
+	p(an("k6"))
+	p(en("k6"))
+	p(bn("k6"))
 
-	p("\nk6")
-	p(clave["k6"][25:60] + clave["k6"][0:25])
-	p(clave["k6"])
-	p(clave["k6"][35:60] + clave["k6"][0:35])
-	p(clave["k6"][10:60] + clave["k6"][0:10])
-	p(clave["k6"][45:60] + clave["k6"][0:45])
-	p(clave["k6"][20:60] + clave["k6"][0:20])
-	p(clave["k6"][55:60] + clave["k6"][0:55])
-
-	p("\nj5")
-	p(clave["j5"][25:60] + clave["j5"][0:25])
-	p(clave["j5"])
-	p(clave["j5"][35:60] + clave["j5"][0:35])
-	p(clave["j5"][10:60] + clave["j5"][0:10])
-	p(clave["j5"][45:60] + clave["j5"][0:45])
-	p(clave["j5"][20:60] + clave["j5"][0:20])
-	p(clave["j5"][55:60] + clave["j5"][0:55])
+	p("\n" + "j5")
+	p(fn("j5"))
+	p(cn("j5"))
+	p(gn("j5"))
+	p(dn("j5"))
+	p(an("j5"))
+	p(en("j5"))
+	p(bn("j5"))
 
 	p("")
 }
