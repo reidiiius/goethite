@@ -1,8 +1,6 @@
-package main
+package scordatura
 
-import "fmt"
-
-var clave = map[string]string{
+var keySignature = map[string]string{
 	"j2":      "HgHg PuFe ____ ____ CuNp PbAu ____ AuPb ____ AgUr ____ FePu ",
 	"j3":      "HgSn ____ SnHg UrFe ____ PbAg ____ AuAu ____ AgPb ____ FeUr ",
 	"j5":      "PbCu ____ AuSn ____ AgHg TiFe FeTi ____ ____ SnAu ____ CuPb ",
@@ -87,408 +85,66 @@ var clave = map[string]string{
 	"k1j56y7": "____ AuUr NpSn ____ TiHg FeFe HgTi ____ SnNp UrAu ____ ____ ",
 	"k2j56y7": "NpCu ____ ____ FePu HgHg PuFe SnTi ____ CuNp PbAu ____ ____ "}
 
-func fn(tuner string) string {
-	return (clave[tuner][25:60] + clave[tuner][0:25])
+func Fj(tuner string) string {
+	return (keySignature[tuner][20:60] + keySignature[tuner][0:20])
 }
-func cn(tuner string) string {
-	return (clave[tuner])
+func Cj(tuner string) string {
+	return (keySignature[tuner][55:60] + keySignature[tuner][0:55])
 }
-func gn(tuner string) string {
-	return (clave[tuner][35:60] + clave[tuner][0:35])
+func Gj(tuner string) string {
+	return (keySignature[tuner][30:60] + keySignature[tuner][0:30])
 }
-func dn(tuner string) string {
-	return (clave[tuner][10:60] + clave[tuner][0:10])
+func Dj(tuner string) string {
+	return (keySignature[tuner][5:60] + keySignature[tuner][0:5])
 }
-func an(tuner string) string {
-	return (clave[tuner][45:60] + clave[tuner][0:45])
+func Aj(tuner string) string {
+	return (keySignature[tuner][40:60] + keySignature[tuner][0:40])
 }
-func en(tuner string) string {
-	return (clave[tuner][20:60] + clave[tuner][0:20])
+func Ej(tuner string) string {
+	return (keySignature[tuner][15:60] + keySignature[tuner][0:15])
 }
-func bn(tuner string) string {
-	return (clave[tuner][55:60] + clave[tuner][0:55])
+func Bj(tuner string) string {
+	return (keySignature[tuner][50:60] + keySignature[tuner][0:50])
 }
-
-func main() {
-	p := fmt.Println
-
-	p("\nn0")
-	p(fn("n0"))
-	p(cn("n0"))
-	p(gn("n0"))
-	p(dn("n0"))
-	p(an("n0"))
-	p(en("n0"))
-	p(bn("n0"))
-
-	p("\nk6")
-	p(fn("k6"))
-	p(cn("k6"))
-	p(gn("k6"))
-	p(dn("k6"))
-	p(an("k6"))
-	p(en("k6"))
-	p(bn("k6"))
-
-	p("\nj17")
-	p(fn("j17"))
-	p(cn("j17"))
-	p(gn("j17"))
-	p(dn("j17"))
-	p(an("j17"))
-	p(en("j17"))
-	p(bn("j17"))
-
-	p("\nk6x5")
-	p(fn("k6x5"))
-	p(cn("k6x5"))
-	p(gn("k6x5"))
-	p(dn("k6x5"))
-	p(an("k6x5"))
-	p(en("k6x5"))
-	p(bn("k6x5"))
-
-	p("\nj17y2")
-	p(fn("j17y2"))
-	p(cn("j17y2"))
-	p(gn("j17y2"))
-	p(dn("j17y2"))
-	p(an("j17y2"))
-	p(en("j17y2"))
-	p(bn("j17y2"))
-
-	p("\nj3")
-	p(fn("j3"))
-	p(cn("j3"))
-	p(gn("j3"))
-	p(dn("j3"))
-	p(an("j3"))
-	p(en("j3"))
-	p(bn("j3"))
-
-	p("\nj34k6")
-	p(fn("j34k6"))
-	p(cn("j34k6"))
-	p(gn("j34k6"))
-	p(dn("j34k6"))
-	p(an("j34k6"))
-	p(en("j34k6"))
-	p(bn("j34k6"))
-
-	p("\nj17k2")
-	p(fn("j17k2"))
-	p(cn("j17k2"))
-	p(gn("j17k2"))
-	p(dn("j17k2"))
-	p(an("j17k2"))
-	p(en("j17k2"))
-	p(bn("j17k2"))
-
-	p("\nn26y5")
-	p(fn("n26y5"))
-	p(cn("n26y5"))
-	p(gn("n26y5"))
-	p(dn("n26y5"))
-	p(an("n26y5"))
-	p(en("n26y5"))
-	p(bn("n26y5"))
-
-	p("\nk26x5")
-	p(fn("k26x5"))
-	p(cn("k26x5"))
-	p(gn("k26x5"))
-	p(dn("k26x5"))
-	p(an("k26x5"))
-	p(en("k26x5"))
-	p(bn("k26x5"))
-
-	p("\nj6")
-	p(fn("j6"))
-	p(cn("j6"))
-	p(gn("j6"))
-	p(dn("j6"))
-	p(an("j6"))
-	p(en("j6"))
-	p(bn("j6"))
-
-	p("\nj36")
-	p(fn("j36"))
-	p(cn("j36"))
-	p(gn("j36"))
-	p(dn("j36"))
-	p(an("j36"))
-	p(en("j36"))
-	p(bn("j36"))
-
-	p("\nk56")
-	p(fn("k56"))
-	p(cn("k56"))
-	p(gn("k56"))
-	p(dn("k56"))
-	p(an("k56"))
-	p(en("k56"))
-	p(bn("k56"))
-
-	p("\nj136y7")
-	p(fn("j136y7"))
-	p(cn("j136y7"))
-	p(gn("j136y7"))
-	p(dn("j136y7"))
-	p(an("j136y7"))
-	p(en("j136y7"))
-	p(bn("j136y7"))
-
-	p("\nk56x4")
-	p(fn("k56x4"))
-	p(cn("k56x4"))
-	p(gn("k56x4"))
-	p(dn("k56x4"))
-	p(an("k56x4"))
-	p(en("k56x4"))
-	p(bn("k56x4"))
-
-	p("\nn167x4")
-	p(fn("n167x4"))
-	p(cn("n167x4"))
-	p(gn("n167x4"))
-	p(dn("n167x4"))
-	p(an("n167x4"))
-	p(en("n167x4"))
-	p(bn("n167x4"))
-
-	p("\nj3k5x4")
-	p(fn("j3k5x4"))
-	p(cn("j3k5x4"))
-	p(gn("j3k5x4"))
-	p(dn("j3k5x4"))
-	p(an("j3k5x4"))
-	p(en("j3k5x4"))
-	p(bn("j3k5x4"))
-
-	p("\nj167y2")
-	p(fn("j167y2"))
-	p(cn("j167y2"))
-	p(gn("j167y2"))
-	p(dn("j167y2"))
-	p(an("j167y2"))
-	p(en("j167y2"))
-	p(bn("j167y2"))
-
-	p("\nj2")
-	p(fn("j2"))
-	p(cn("j2"))
-	p(gn("j2"))
-	p(dn("j2"))
-	p(an("j2"))
-	p(en("j2"))
-	p(bn("j2"))
-
-	p("\nj236")
-	p(fn("j236"))
-	p(cn("j236"))
-	p(gn("j236"))
-	p(dn("j236"))
-	p(an("j236"))
-	p(en("j236"))
-	p(bn("j236"))
-
-	p("\nj26")
-	p(fn("j26"))
-	p(cn("j26"))
-	p(gn("j26"))
-	p(dn("j26"))
-	p(an("j26"))
-	p(en("j26"))
-	p(bn("j26"))
-
-	p("\nj23")
-	p(fn("j23"))
-	p(cn("j23"))
-	p(gn("j23"))
-	p(dn("j23"))
-	p(an("j23"))
-	p(en("j23"))
-	p(bn("j23"))
-
-	p("\nj23k6")
-	p(fn("j23k6"))
-	p(cn("j23k6"))
-	p(gn("j23k6"))
-	p(dn("j23k6"))
-	p(an("j23k6"))
-	p(en("j23k6"))
-	p(bn("j23k6"))
-
-	p("\nj2y3")
-	p(fn("j2y3"))
-	p(cn("j2y3"))
-	p(gn("j2y3"))
-	p(dn("j2y3"))
-	p(an("j2y3"))
-	p(en("j2y3"))
-	p(bn("j2y3"))
-
-	p("\nj2k6")
-	p(fn("j2k6"))
-	p(cn("j2k6"))
-	p(gn("j2k6"))
-	p(dn("j2k6"))
-	p(an("j2k6"))
-	p(en("j2k6"))
-	p(bn("j2k6"))
-
-	p("\nj26y3")
-	p(fn("j26y3"))
-	p(cn("j26y3"))
-	p(gn("j26y3"))
-	p(dn("j26y3"))
-	p(an("j26y3"))
-	p(en("j26y3"))
-	p(bn("j26y3"))
-
-	p("\nj2k56")
-	p(fn("j2k56"))
-	p(cn("j2k56"))
-	p(gn("j2k56"))
-	p(dn("j2k56"))
-	p(an("j2k56"))
-	p(en("j2k56"))
-	p(bn("j2k56"))
-
-	p("\nj246y3")
-	p(fn("j246y3"))
-	p(cn("j246y3"))
-	p(gn("j246y3"))
-	p(dn("j246y3"))
-	p(an("j246y3"))
-	p(en("j246y3"))
-	p(bn("j246y3"))
-
-	p("\nj2k56x4")
-	p(fn("j2k56x4"))
-	p(cn("j2k56x4"))
-	p(gn("j2k56x4"))
-	p(dn("j2k56x4"))
-	p(an("j2k56x4"))
-	p(en("j2k56x4"))
-	p(bn("j2k56x4"))
-
-	p("\nk157x6")
-	p(fn("k157x6"))
-	p(cn("k157x6"))
-	p(gn("k157x6"))
-	p(dn("k157x6"))
-	p(an("k157x6"))
-	p(en("k157x6"))
-	p(bn("k157x6"))
-
-	p("\nj26y34")
-	p(fn("j26y34"))
-	p(cn("j26y34"))
-	p(gn("j26y34"))
-	p(dn("j26y34"))
-	p(an("j26y34"))
-	p(en("j26y34"))
-	p(bn("j26y34"))
-
-	p("\nj2k6x5")
-	p(fn("j2k6x5"))
-	p(cn("j2k6x5"))
-	p(gn("j2k6x5"))
-	p(dn("j2k6x5"))
-	p(an("j2k6x5"))
-	p(en("j2k6x5"))
-	p(bn("j2k6x5"))
-
-	p("\nj2k6y3")
-	p(fn("j2k6y3"))
-	p(cn("j2k6y3"))
-	p(gn("j2k6y3"))
-	p(dn("j2k6y3"))
-	p(an("j2k6y3"))
-	p(en("j2k6y3"))
-	p(bn("j2k6y3"))
-
-	p("\nk1j6")
-	p(fn("k1j6"))
-	p(cn("k1j6"))
-	p(gn("k1j6"))
-	p(dn("k1j6"))
-	p(an("k1j6"))
-	p(en("k1j6"))
-	p(bn("k1j6"))
-
-	p("\nn345")
-	p(fn("n345"))
-	p(cn("n345"))
-	p(gn("n345"))
-	p(dn("n345"))
-	p(an("n345"))
-	p(en("n345"))
-	p(bn("n345"))
-
-	p("\nj3k6")
-	p(fn("j3k6"))
-	p(cn("j3k6"))
-	p(gn("j3k6"))
-	p(dn("j3k6"))
-	p(an("j3k6"))
-	p(en("j3k6"))
-	p(bn("j3k6"))
-
-	p("\nn45y2")
-	p(fn("n45y2"))
-	p(cn("n45y2"))
-	p(gn("n45y2"))
-	p(dn("n45y2"))
-	p(an("n45y2"))
-	p(en("n45y2"))
-	p(bn("n45y2"))
-
-	p("\nj3k56x4")
-	p(fn("j3k56x4"))
-	p(cn("j3k56x4"))
-	p(gn("j3k56x4"))
-	p(dn("j3k56x4"))
-	p(an("j3k56x4"))
-	p(en("j3k56x4"))
-	p(bn("j3k56x4"))
-
-	p("\nk2j6")
-	p(fn("k2j6"))
-	p(cn("k2j6"))
-	p(gn("k2j6"))
-	p(dn("k2j6"))
-	p(an("k2j6"))
-	p(en("k2j6"))
-	p(bn("k2j6"))
-
-	p("\nn5y2")
-	p(fn("n5y2"))
-	p(cn("n5y2"))
-	p(gn("n5y2"))
-	p(dn("n5y2"))
-	p(an("n5y2"))
-	p(en("n5y2"))
-	p(bn("n5y2"))
-
-	p("\nk26")
-	p(fn("k26"))
-	p(cn("k26"))
-	p(gn("k26"))
-	p(dn("k26"))
-	p(an("k26"))
-	p(en("k26"))
-	p(bn("k26"))
-
-	p("\nk256")
-	p(fn("k256"))
-	p(cn("k256"))
-	p(gn("k256"))
-	p(dn("k256"))
-	p(an("k256"))
-	p(en("k256"))
-	p(bn("k256"))
-
-	p("")
+func Fn(tuner string) string {
+	return (keySignature[tuner][25:60] + keySignature[tuner][0:25])
+}
+func Cn(tuner string) string {
+	return (keySignature[tuner])
+}
+func Gn(tuner string) string {
+	return (keySignature[tuner][35:60] + keySignature[tuner][0:35])
+}
+func Dn(tuner string) string {
+	return (keySignature[tuner][10:60] + keySignature[tuner][0:10])
+}
+func An(tuner string) string {
+	return (keySignature[tuner][45:60] + keySignature[tuner][0:45])
+}
+func En(tuner string) string {
+	return (keySignature[tuner][20:60] + keySignature[tuner][0:20])
+}
+func Bn(tuner string) string {
+	return (keySignature[tuner][55:60] + keySignature[tuner][0:55])
+}
+func Fk(tuner string) string {
+	return (keySignature[tuner][30:60] + keySignature[tuner][0:30])
+}
+func Ck(tuner string) string {
+	return (keySignature[tuner][5:60] + keySignature[tuner][0:5])
+}
+func Gk(tuner string) string {
+	return (keySignature[tuner][40:60] + keySignature[tuner][0:40])
+}
+func Dk(tuner string) string {
+	return (keySignature[tuner][15:60] + keySignature[tuner][0:15])
+}
+func Ak(tuner string) string {
+	return (keySignature[tuner][50:60] + keySignature[tuner][0:50])
+}
+func Ek(tuner string) string {
+	return (keySignature[tuner][25:60] + keySignature[tuner][0:25])
+}
+func Bk(tuner string) string {
+	return (keySignature[tuner])
 }
