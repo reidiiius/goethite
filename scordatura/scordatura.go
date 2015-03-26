@@ -1,6 +1,6 @@
 package scordatura
 
-var keySignature = map[string]string{
+var scaleList = map[string]string{
 	"j2":      "HgHg PuFe ____ ____ CuNp PbAu ____ AuPb ____ AgUr ____ FePu ",
 	"j3":      "HgSn ____ SnHg UrFe ____ PbAg ____ AuAu ____ AgPb ____ FeUr ",
 	"j5":      "PbCu ____ AuSn ____ AgHg TiFe FeTi ____ ____ SnAu ____ CuPb ",
@@ -85,66 +85,66 @@ var keySignature = map[string]string{
 	"k1j56y7": "____ AuUr NpSn ____ TiHg FeFe HgTi ____ SnNp UrAu ____ ____ ",
 	"k2j56y7": "NpCu ____ ____ FePu HgHg PuFe SnTi ____ CuNp PbAu ____ ____ "}
 
-func Fj(tuner string) string {
-	return (keySignature[tuner][20:60] + keySignature[tuner][0:20])
+func Fj(name string) string {
+	return (scaleList[name][20:60] + scaleList[name][0:20])
 }
-func Cj(tuner string) string {
-	return (keySignature[tuner][55:60] + keySignature[tuner][0:55])
+func Cj(name string) string {
+	return (scaleList[name][55:60] + scaleList[name][0:55])
 }
-func Gj(tuner string) string {
-	return (keySignature[tuner][30:60] + keySignature[tuner][0:30])
+func Gj(name string) string {
+	return (scaleList[name][30:60] + scaleList[name][0:30])
 }
-func Dj(tuner string) string {
-	return (keySignature[tuner][5:60] + keySignature[tuner][0:5])
+func Dj(name string) string {
+	return (scaleList[name][5:60] + scaleList[name][0:5])
 }
-func Aj(tuner string) string {
-	return (keySignature[tuner][40:60] + keySignature[tuner][0:40])
+func Aj(name string) string {
+	return (scaleList[name][40:60] + scaleList[name][0:40])
 }
-func Ej(tuner string) string {
-	return (keySignature[tuner][15:60] + keySignature[tuner][0:15])
+func Ej(name string) string {
+	return (scaleList[name][15:60] + scaleList[name][0:15])
 }
-func Bj(tuner string) string {
-	return (keySignature[tuner][50:60] + keySignature[tuner][0:50])
+func Bj(name string) string {
+	return (scaleList[name][50:60] + scaleList[name][0:50])
 }
-func Fn(tuner string) string {
-	return (keySignature[tuner][25:60] + keySignature[tuner][0:25])
+func Fn(name string) string {
+	return (scaleList[name][25:60] + scaleList[name][0:25])
 }
-func Cn(tuner string) string {
-	return (keySignature[tuner])
+func Cn(name string) string {
+	return (scaleList[name])
 }
-func Gn(tuner string) string {
-	return (keySignature[tuner][35:60] + keySignature[tuner][0:35])
+func Gn(name string) string {
+	return (scaleList[name][35:60] + scaleList[name][0:35])
 }
-func Dn(tuner string) string {
-	return (keySignature[tuner][10:60] + keySignature[tuner][0:10])
+func Dn(name string) string {
+	return (scaleList[name][10:60] + scaleList[name][0:10])
 }
-func An(tuner string) string {
-	return (keySignature[tuner][45:60] + keySignature[tuner][0:45])
+func An(name string) string {
+	return (scaleList[name][45:60] + scaleList[name][0:45])
 }
-func En(tuner string) string {
-	return (keySignature[tuner][20:60] + keySignature[tuner][0:20])
+func En(name string) string {
+	return (scaleList[name][20:60] + scaleList[name][0:20])
 }
-func Bn(tuner string) string {
-	return (keySignature[tuner][55:60] + keySignature[tuner][0:55])
+func Bn(name string) string {
+	return (scaleList[name][55:60] + scaleList[name][0:55])
 }
-func Fk(tuner string) string {
-	return (keySignature[tuner][30:60] + keySignature[tuner][0:30])
+func Fk(name string) string {
+	return (scaleList[name][30:60] + scaleList[name][0:30])
 }
-func Ck(tuner string) string {
-	return (keySignature[tuner][5:60] + keySignature[tuner][0:5])
+func Ck(name string) string {
+	return (scaleList[name][5:60] + scaleList[name][0:5])
 }
-func Gk(tuner string) string {
-	return (keySignature[tuner][40:60] + keySignature[tuner][0:40])
+func Gk(name string) string {
+	return (scaleList[name][40:60] + scaleList[name][0:40])
 }
-func Dk(tuner string) string {
-	return (keySignature[tuner][15:60] + keySignature[tuner][0:15])
+func Dk(name string) string {
+	return (scaleList[name][15:60] + scaleList[name][0:15])
 }
-func Ak(tuner string) string {
-	return (keySignature[tuner][50:60] + keySignature[tuner][0:50])
+func Ak(name string) string {
+	return (scaleList[name][50:60] + scaleList[name][0:50])
 }
-func Ek(tuner string) string {
-	return (keySignature[tuner][25:60] + keySignature[tuner][0:25])
+func Ek(name string) string {
+	return (scaleList[name][25:60] + scaleList[name][0:25])
 }
-func Bk(tuner string) string {
-	return (keySignature[tuner])
+func Bk(name string) string {
+	return (scaleList[name])
 }
