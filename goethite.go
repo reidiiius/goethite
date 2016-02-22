@@ -6,385 +6,65 @@ import (
 )
 
 func main() {
+
+	aragonite := [42]string{
+		"n0",
+		"k6",
+		"j17",
+		"k6x5",
+		"j17y2",
+		"j3",
+		"j34k6",
+		"j17k2",
+		"n26y5",
+		"k26x5",
+		"j6",
+		"j36",
+		"k56",
+		"j136y7",
+		"k56x4",
+		"n167x4",
+		"j3k5x4",
+		"j167y2",
+		"j2",
+		"j236",
+		"j26",
+		"j23",
+		"j23k6",
+		"j2y3",
+		"j2k6",
+		"j26y3",
+		"j2k56",
+		"j246y3",
+		"j2k56x4",
+		"k157x6",
+		"j26y34",
+		"j2k6x5",
+		"j2k6y3",
+		"k1j6",
+		"n345",
+		"j3k6",
+		"n45y2",
+		"j3k56x4",
+		"k2j6",
+		"n5y2",
+		"k26",
+		"k256",
+	}
+
 	p := fmt.Println
 
-	p("\nn0")
-	p(scordatura.Fn("n0"))
-	p(scordatura.Cn("n0"))
-	p(scordatura.Gn("n0"))
-	p(scordatura.Dn("n0"))
-	p(scordatura.An("n0"))
-	p(scordatura.En("n0"))
-	p(scordatura.Bn("n0"))
-
-	p("\nk6")
-	p(scordatura.Fn("k6"))
-	p(scordatura.Cn("k6"))
-	p(scordatura.Gn("k6"))
-	p(scordatura.Dn("k6"))
-	p(scordatura.An("k6"))
-	p(scordatura.En("k6"))
-	p(scordatura.Bn("k6"))
-
-	p("\nj17")
-	p(scordatura.Fn("j17"))
-	p(scordatura.Cn("j17"))
-	p(scordatura.Gn("j17"))
-	p(scordatura.Dn("j17"))
-	p(scordatura.An("j17"))
-	p(scordatura.En("j17"))
-	p(scordatura.Bn("j17"))
-
-	p("\nk6x5")
-	p(scordatura.Fn("k6x5"))
-	p(scordatura.Cn("k6x5"))
-	p(scordatura.Gn("k6x5"))
-	p(scordatura.Dn("k6x5"))
-	p(scordatura.An("k6x5"))
-	p(scordatura.En("k6x5"))
-	p(scordatura.Bn("k6x5"))
-
-	p("\nj17y2")
-	p(scordatura.Fn("j17y2"))
-	p(scordatura.Cn("j17y2"))
-	p(scordatura.Gn("j17y2"))
-	p(scordatura.Dn("j17y2"))
-	p(scordatura.An("j17y2"))
-	p(scordatura.En("j17y2"))
-	p(scordatura.Bn("j17y2"))
-
-	p("\nj3")
-	p(scordatura.Fn("j3"))
-	p(scordatura.Cn("j3"))
-	p(scordatura.Gn("j3"))
-	p(scordatura.Dn("j3"))
-	p(scordatura.An("j3"))
-	p(scordatura.En("j3"))
-	p(scordatura.Bn("j3"))
-
-	p("\nj34k6")
-	p(scordatura.Fn("j34k6"))
-	p(scordatura.Cn("j34k6"))
-	p(scordatura.Gn("j34k6"))
-	p(scordatura.Dn("j34k6"))
-	p(scordatura.An("j34k6"))
-	p(scordatura.En("j34k6"))
-	p(scordatura.Bn("j34k6"))
-
-	p("\nj17k2")
-	p(scordatura.Fn("j17k2"))
-	p(scordatura.Cn("j17k2"))
-	p(scordatura.Gn("j17k2"))
-	p(scordatura.Dn("j17k2"))
-	p(scordatura.An("j17k2"))
-	p(scordatura.En("j17k2"))
-	p(scordatura.Bn("j17k2"))
-
-	p("\nn26y5")
-	p(scordatura.Fn("n26y5"))
-	p(scordatura.Cn("n26y5"))
-	p(scordatura.Gn("n26y5"))
-	p(scordatura.Dn("n26y5"))
-	p(scordatura.An("n26y5"))
-	p(scordatura.En("n26y5"))
-	p(scordatura.Bn("n26y5"))
-
-	p("\nk26x5")
-	p(scordatura.Fn("k26x5"))
-	p(scordatura.Cn("k26x5"))
-	p(scordatura.Gn("k26x5"))
-	p(scordatura.Dn("k26x5"))
-	p(scordatura.An("k26x5"))
-	p(scordatura.En("k26x5"))
-	p(scordatura.Bn("k26x5"))
-
-	p("\nj6")
-	p(scordatura.Fn("j6"))
-	p(scordatura.Cn("j6"))
-	p(scordatura.Gn("j6"))
-	p(scordatura.Dn("j6"))
-	p(scordatura.An("j6"))
-	p(scordatura.En("j6"))
-	p(scordatura.Bn("j6"))
-
-	p("\nj36")
-	p(scordatura.Fn("j36"))
-	p(scordatura.Cn("j36"))
-	p(scordatura.Gn("j36"))
-	p(scordatura.Dn("j36"))
-	p(scordatura.An("j36"))
-	p(scordatura.En("j36"))
-	p(scordatura.Bn("j36"))
-
-	p("\nk56")
-	p(scordatura.Fn("k56"))
-	p(scordatura.Cn("k56"))
-	p(scordatura.Gn("k56"))
-	p(scordatura.Dn("k56"))
-	p(scordatura.An("k56"))
-	p(scordatura.En("k56"))
-	p(scordatura.Bn("k56"))
-
-	p("\nj136y7")
-	p(scordatura.Fn("j136y7"))
-	p(scordatura.Cn("j136y7"))
-	p(scordatura.Gn("j136y7"))
-	p(scordatura.Dn("j136y7"))
-	p(scordatura.An("j136y7"))
-	p(scordatura.En("j136y7"))
-	p(scordatura.Bn("j136y7"))
-
-	p("\nk56x4")
-	p(scordatura.Fn("k56x4"))
-	p(scordatura.Cn("k56x4"))
-	p(scordatura.Gn("k56x4"))
-	p(scordatura.Dn("k56x4"))
-	p(scordatura.An("k56x4"))
-	p(scordatura.En("k56x4"))
-	p(scordatura.Bn("k56x4"))
-
-	p("\nn167x4")
-	p(scordatura.Fn("n167x4"))
-	p(scordatura.Cn("n167x4"))
-	p(scordatura.Gn("n167x4"))
-	p(scordatura.Dn("n167x4"))
-	p(scordatura.An("n167x4"))
-	p(scordatura.En("n167x4"))
-	p(scordatura.Bn("n167x4"))
-
-	p("\nj3k5x4")
-	p(scordatura.Fn("j3k5x4"))
-	p(scordatura.Cn("j3k5x4"))
-	p(scordatura.Gn("j3k5x4"))
-	p(scordatura.Dn("j3k5x4"))
-	p(scordatura.An("j3k5x4"))
-	p(scordatura.En("j3k5x4"))
-	p(scordatura.Bn("j3k5x4"))
-
-	p("\nj167y2")
-	p(scordatura.Fn("j167y2"))
-	p(scordatura.Cn("j167y2"))
-	p(scordatura.Gn("j167y2"))
-	p(scordatura.Dn("j167y2"))
-	p(scordatura.An("j167y2"))
-	p(scordatura.En("j167y2"))
-	p(scordatura.Bn("j167y2"))
-
-	p("\nj2")
-	p(scordatura.Fn("j2"))
-	p(scordatura.Cn("j2"))
-	p(scordatura.Gn("j2"))
-	p(scordatura.Dn("j2"))
-	p(scordatura.An("j2"))
-	p(scordatura.En("j2"))
-	p(scordatura.Bn("j2"))
-
-	p("\nj236")
-	p(scordatura.Fn("j236"))
-	p(scordatura.Cn("j236"))
-	p(scordatura.Gn("j236"))
-	p(scordatura.Dn("j236"))
-	p(scordatura.An("j236"))
-	p(scordatura.En("j236"))
-	p(scordatura.Bn("j236"))
-
-	p("\nj26")
-	p(scordatura.Fn("j26"))
-	p(scordatura.Cn("j26"))
-	p(scordatura.Gn("j26"))
-	p(scordatura.Dn("j26"))
-	p(scordatura.An("j26"))
-	p(scordatura.En("j26"))
-	p(scordatura.Bn("j26"))
-
-	p("\nj23")
-	p(scordatura.Fn("j23"))
-	p(scordatura.Cn("j23"))
-	p(scordatura.Gn("j23"))
-	p(scordatura.Dn("j23"))
-	p(scordatura.An("j23"))
-	p(scordatura.En("j23"))
-	p(scordatura.Bn("j23"))
-
-	p("\nj23k6")
-	p(scordatura.Fn("j23k6"))
-	p(scordatura.Cn("j23k6"))
-	p(scordatura.Gn("j23k6"))
-	p(scordatura.Dn("j23k6"))
-	p(scordatura.An("j23k6"))
-	p(scordatura.En("j23k6"))
-	p(scordatura.Bn("j23k6"))
-
-	p("\nj2y3")
-	p(scordatura.Fn("j2y3"))
-	p(scordatura.Cn("j2y3"))
-	p(scordatura.Gn("j2y3"))
-	p(scordatura.Dn("j2y3"))
-	p(scordatura.An("j2y3"))
-	p(scordatura.En("j2y3"))
-	p(scordatura.Bn("j2y3"))
-
-	p("\nj2k6")
-	p(scordatura.Fn("j2k6"))
-	p(scordatura.Cn("j2k6"))
-	p(scordatura.Gn("j2k6"))
-	p(scordatura.Dn("j2k6"))
-	p(scordatura.An("j2k6"))
-	p(scordatura.En("j2k6"))
-	p(scordatura.Bn("j2k6"))
-
-	p("\nj26y3")
-	p(scordatura.Fn("j26y3"))
-	p(scordatura.Cn("j26y3"))
-	p(scordatura.Gn("j26y3"))
-	p(scordatura.Dn("j26y3"))
-	p(scordatura.An("j26y3"))
-	p(scordatura.En("j26y3"))
-	p(scordatura.Bn("j26y3"))
-
-	p("\nj2k56")
-	p(scordatura.Fn("j2k56"))
-	p(scordatura.Cn("j2k56"))
-	p(scordatura.Gn("j2k56"))
-	p(scordatura.Dn("j2k56"))
-	p(scordatura.An("j2k56"))
-	p(scordatura.En("j2k56"))
-	p(scordatura.Bn("j2k56"))
-
-	p("\nj246y3")
-	p(scordatura.Fn("j246y3"))
-	p(scordatura.Cn("j246y3"))
-	p(scordatura.Gn("j246y3"))
-	p(scordatura.Dn("j246y3"))
-	p(scordatura.An("j246y3"))
-	p(scordatura.En("j246y3"))
-	p(scordatura.Bn("j246y3"))
-
-	p("\nj2k56x4")
-	p(scordatura.Fn("j2k56x4"))
-	p(scordatura.Cn("j2k56x4"))
-	p(scordatura.Gn("j2k56x4"))
-	p(scordatura.Dn("j2k56x4"))
-	p(scordatura.An("j2k56x4"))
-	p(scordatura.En("j2k56x4"))
-	p(scordatura.Bn("j2k56x4"))
-
-	p("\nk157x6")
-	p(scordatura.Fn("k157x6"))
-	p(scordatura.Cn("k157x6"))
-	p(scordatura.Gn("k157x6"))
-	p(scordatura.Dn("k157x6"))
-	p(scordatura.An("k157x6"))
-	p(scordatura.En("k157x6"))
-	p(scordatura.Bn("k157x6"))
-
-	p("\nj26y34")
-	p(scordatura.Fn("j26y34"))
-	p(scordatura.Cn("j26y34"))
-	p(scordatura.Gn("j26y34"))
-	p(scordatura.Dn("j26y34"))
-	p(scordatura.An("j26y34"))
-	p(scordatura.En("j26y34"))
-	p(scordatura.Bn("j26y34"))
-
-	p("\nj2k6x5")
-	p(scordatura.Fn("j2k6x5"))
-	p(scordatura.Cn("j2k6x5"))
-	p(scordatura.Gn("j2k6x5"))
-	p(scordatura.Dn("j2k6x5"))
-	p(scordatura.An("j2k6x5"))
-	p(scordatura.En("j2k6x5"))
-	p(scordatura.Bn("j2k6x5"))
-
-	p("\nj2k6y3")
-	p(scordatura.Fn("j2k6y3"))
-	p(scordatura.Cn("j2k6y3"))
-	p(scordatura.Gn("j2k6y3"))
-	p(scordatura.Dn("j2k6y3"))
-	p(scordatura.An("j2k6y3"))
-	p(scordatura.En("j2k6y3"))
-	p(scordatura.Bn("j2k6y3"))
-
-	p("\nk1j6")
-	p(scordatura.Fn("k1j6"))
-	p(scordatura.Cn("k1j6"))
-	p(scordatura.Gn("k1j6"))
-	p(scordatura.Dn("k1j6"))
-	p(scordatura.An("k1j6"))
-	p(scordatura.En("k1j6"))
-	p(scordatura.Bn("k1j6"))
-
-	p("\nn345")
-	p(scordatura.Fn("n345"))
-	p(scordatura.Cn("n345"))
-	p(scordatura.Gn("n345"))
-	p(scordatura.Dn("n345"))
-	p(scordatura.An("n345"))
-	p(scordatura.En("n345"))
-	p(scordatura.Bn("n345"))
-
-	p("\nj3k6")
-	p(scordatura.Fn("j3k6"))
-	p(scordatura.Cn("j3k6"))
-	p(scordatura.Gn("j3k6"))
-	p(scordatura.Dn("j3k6"))
-	p(scordatura.An("j3k6"))
-	p(scordatura.En("j3k6"))
-	p(scordatura.Bn("j3k6"))
-
-	p("\nn45y2")
-	p(scordatura.Fn("n45y2"))
-	p(scordatura.Cn("n45y2"))
-	p(scordatura.Gn("n45y2"))
-	p(scordatura.Dn("n45y2"))
-	p(scordatura.An("n45y2"))
-	p(scordatura.En("n45y2"))
-	p(scordatura.Bn("n45y2"))
-
-	p("\nj3k56x4")
-	p(scordatura.Fn("j3k56x4"))
-	p(scordatura.Cn("j3k56x4"))
-	p(scordatura.Gn("j3k56x4"))
-	p(scordatura.Dn("j3k56x4"))
-	p(scordatura.An("j3k56x4"))
-	p(scordatura.En("j3k56x4"))
-	p(scordatura.Bn("j3k56x4"))
-
-	p("\nk2j6")
-	p(scordatura.Fn("k2j6"))
-	p(scordatura.Cn("k2j6"))
-	p(scordatura.Gn("k2j6"))
-	p(scordatura.Dn("k2j6"))
-	p(scordatura.An("k2j6"))
-	p(scordatura.En("k2j6"))
-	p(scordatura.Bn("k2j6"))
-
-	p("\nn5y2")
-	p(scordatura.Fn("n5y2"))
-	p(scordatura.Cn("n5y2"))
-	p(scordatura.Gn("n5y2"))
-	p(scordatura.Dn("n5y2"))
-	p(scordatura.An("n5y2"))
-	p(scordatura.En("n5y2"))
-	p(scordatura.Bn("n5y2"))
-
-	p("\nk26")
-	p(scordatura.Fn("k26"))
-	p(scordatura.Cn("k26"))
-	p(scordatura.Gn("k26"))
-	p(scordatura.Dn("k26"))
-	p(scordatura.An("k26"))
-	p(scordatura.En("k26"))
-	p(scordatura.Bn("k26"))
-
-	p("\nk256")
-	p(scordatura.Fn("k256"))
-	p(scordatura.Cn("k256"))
-	p(scordatura.Gn("k256"))
-	p(scordatura.Dn("k256"))
-	p(scordatura.An("k256"))
-	p(scordatura.En("k256"))
-	p(scordatura.Bn("k256"))
+	for i := 0; i < len(aragonite); i++ {
+		p("\n" + aragonite[i])
+		p("\t" + scordatura.Fn(aragonite[i]))
+		p("\t" + scordatura.Cn(aragonite[i]))
+		p("\t" + scordatura.Gn(aragonite[i]))
+		p("\t" + scordatura.Dn(aragonite[i]))
+		p("\t" + scordatura.An(aragonite[i]))
+		p("\t" + scordatura.En(aragonite[i]))
+		p("\t" + scordatura.Bn(aragonite[i]))
+	}
 
 	p("")
+
 }
