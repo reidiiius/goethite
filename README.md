@@ -1,7 +1,21 @@
-Goethite
-========
+# Goethite
+Cartography
 
+---
 
+### Download
 
-> Copyright &#169; 2015-2016 Reid Netterville III
+    git clone https://github.com/reidiiius/goethite.git
+
+---
+
+### Usage
+command line
+
+    go run goethite.go | less
+
+---
+
+### Distribution
+MIT License
 
