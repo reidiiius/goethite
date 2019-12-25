@@ -148,3 +148,62 @@ func Ek(name string) string {
 func Bk(name string) string {
 	return (scaleList[name])
 }
+
+// Tunings
+func BEADGCF(name string) [8]string {
+	a := [8]string{
+		name,
+		Fn(name),
+		Cn(name),
+		Gn(name),
+		Dn(name),
+		An(name),
+		En(name),
+		Bn(name),
+	}
+	return a
+}
+func BFBFB(name string) [6]string {
+	bn, fn := Bn(name), Fn(name)
+	a := [6]string{name, bn, fn, bn, fn, bn}
+	return a
+}
+func CGDAE(name string) [6]string {
+	a := [6]string{
+		name,
+		En(name),
+		An(name),
+		Dn(name),
+		Gn(name),
+		Cn(name),
+	}
+	return a
+}
+func DADGAD(name string) [7]string {
+	an, dn, gn := An(name), Dn(name), Gn(name)
+	a := [7]string{name, dn, an, gn, dn, an, dn}
+	return a
+}
+func DADGBD(name string) [7]string {
+	an, bn, dn, gn := An(name), Bn(name), Dn(name), Gn(name)
+	a := [7]string{name, dn, bn, gn, dn, an, dn}
+	return a
+}
+func EADGBE(name string) [7]string {
+	en := En(name)
+	a := [7]string{
+		name,
+		en,
+		Bn(name),
+		Gn(name),
+		Dn(name),
+		An(name),
+		en,
+	}
+	return a
+}
+func FkBjDn(name string) [7]string {
+	dn, bj, fk := Dn(name), Bj(name), Fk(name)
+	a := [7]string{name, dn, bj, fk, dn, bj, fk}
+	return a
+}

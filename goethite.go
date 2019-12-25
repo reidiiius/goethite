@@ -53,16 +53,14 @@ func main() {
 	}
 
 	p := fmt.Println
+	f := scordatura.EADGBE // Tuning
 
 	for i := 0; i < len(aragonite); i++ {
-		p("\n" + aragonite[i])
-		p("\t" + scordatura.Fn(aragonite[i]))
-		p("\t" + scordatura.Cn(aragonite[i]))
-		p("\t" + scordatura.Gn(aragonite[i]))
-		p("\t" + scordatura.Dn(aragonite[i]))
-		p("\t" + scordatura.An(aragonite[i]))
-		p("\t" + scordatura.En(aragonite[i]))
-		p("\t" + scordatura.Bn(aragonite[i]))
+		a := f(aragonite[i])
+		p("")
+		for j := 0; j < len(a); j++ {
+			p("\t" + a[j])
+		}
 	}
 
 	p("")
