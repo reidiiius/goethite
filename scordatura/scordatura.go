@@ -1,3 +1,5 @@
+// Package scordatura provides data and routines to model
+// semigraphic fingerboard diagrams for stringed intruments.
 package scordatura
 
 var ScaleList = map[string]string{

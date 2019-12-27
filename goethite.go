@@ -5,6 +5,7 @@ import (
 	"github.com/reidiiius/goethite/scordatura"
 	"os"
 	"sort"
+	"time"
 )
 
 func main() {
@@ -31,6 +32,9 @@ func main() {
 
 	tuning := scordatura.EADGBE
 
+	epoch := time.Now().UnixNano()
+	phyla := fmt.Sprintf("%s%d", "-eadgbe-v", epoch)
+
 	for i := 1; i < len(os.Args); i++ {
 		if scordatura.Absent(os.Args[i]) {
 			fmt.Println("\n\t" + os.Args[i] + " ?")
@@ -41,7 +45,11 @@ func main() {
 
 		fmt.Println("")
 		for j := 0; j < len(pegbox); j++ {
-			fmt.Println("\t" + pegbox[j])
+			if j == 0 {
+				fmt.Println("\t" + pegbox[j] + phyla)
+			} else {
+				fmt.Println("\t" + pegbox[j])
+			}
 		}
 	}
 

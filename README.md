@@ -10,7 +10,9 @@ Cartography
 ---
 
 ### Usage
-command line
+Command-line interface
+
+    cd goethite/
 
     go run goethite.go
 
