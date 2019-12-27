@@ -12,7 +12,11 @@ Cartography
 ### Usage
 command line
 
-    go run goethite.go | less
+    go run goethite.go
+
+    go run goethite.go n0
+
+    go run goethite.go j3 k1
 
 ---
 

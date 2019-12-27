@@ -3,66 +3,47 @@ package main
 import (
 	"fmt"
 	"github.com/reidiiius/goethite/scordatura"
+	"os"
+	"sort"
 )
 
 func main() {
 
-	aragonite := [42]string{
-		"n0",
-		"k6",
-		"j17",
-		"k6x5",
-		"j17y2",
-		"j3",
-		"j34k6",
-		"j17k2",
-		"n26y5",
-		"k26x5",
-		"j6",
-		"j36",
-		"k56",
-		"j136y7",
-		"k56x4",
-		"n167x4",
-		"j3k5x4",
-		"j167y2",
-		"j2",
-		"j236",
-		"j26",
-		"j23",
-		"j23k6",
-		"j2y3",
-		"j2k6",
-		"j26y3",
-		"j2k56",
-		"j246y3",
-		"j2k56x4",
-		"k157x6",
-		"j26y34",
-		"j2k6x5",
-		"j2k6y3",
-		"k1j6",
-		"n345",
-		"j3k6",
-		"n45y2",
-		"j3k56x4",
-		"k2j6",
-		"n5y2",
-		"k26",
-		"k256",
+	scordatura.ScaleList["z0"] = scordatura.Zilch()
+
+	var menu []string
+	menu = scordatura.Signos()
+
+	if !sort.StringsAreSorted(menu) {
+		sort.Strings(menu)
 	}
 
-	p := fmt.Println
-	f := scordatura.EADGBE // Tuning
+	if len(os.Args) < 2 {
+		for i := 0; i < len(menu); i++ {
+			if i%7 == 0 {
+				fmt.Println("")
+			}
+			fmt.Print("\t", menu[i])
+		}
 
-	for i := 0; i < len(aragonite); i++ {
-		a := f(aragonite[i])
-		p("")
-		for j := 0; j < len(a); j++ {
-			p("\t" + a[j])
+		fmt.Println("")
+	}
+
+	tuning := scordatura.EADGBE
+
+	for i := 1; i < len(os.Args); i++ {
+		if scordatura.Absent(os.Args[i]) {
+			fmt.Println("\n\t" + os.Args[i] + " ?")
+			continue
+		}
+
+		pegbox := tuning(os.Args[i])
+
+		fmt.Println("")
+		for j := 0; j < len(pegbox); j++ {
+			fmt.Println("\t" + pegbox[j])
 		}
 	}
 
-	p("")
-
+	fmt.Println("")
 }

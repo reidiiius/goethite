@@ -1,6 +1,6 @@
 package scordatura
 
-var scaleList = map[string]string{
+var ScaleList = map[string]string{
 	"j2":      "HgHg PuFe ____ ____ CuNp PbAu ____ AuPb ____ AgUr ____ FePu ",
 	"j3":      "HgSn ____ SnHg UrFe ____ PbAg ____ AuAu ____ AgPb ____ FeUr ",
 	"j5":      "PbCu ____ AuSn ____ AgHg TiFe FeTi ____ ____ SnAu ____ CuPb ",
@@ -86,6 +86,24 @@ var scaleList = map[string]string{
 	"k2j56y7": "NpCu ____ ____ FePu HgHg PuFe SnTi ____ CuNp PbAu ____ ____ "}
 
 // Utilities
+
+func Absent(name string) bool {
+	_, ok := ScaleList[name]
+
+	if ok {
+		return false
+	}
+	return true
+}
+
+func Signos() []string {
+	var a []string
+	for k, _ := range ScaleList {
+		a = append(a, k)
+	}
+	return a
+}
+
 func Zilch() string {
 	s := ""
 	for i := 0; i < 12; i++ {
@@ -94,104 +112,94 @@ func Zilch() string {
 	return s
 }
 
-func SepTacet() [7]string {
-	s := Zilch()
-	return [7]string{"z0", s, s, s, s, s, s}
-}
-
-func Absent(name string) bool {
-	if len(scaleList[name]) == 60 {
-		return false
-	}
-	return true
-}
-
 // Headstock
+
 func Fj(name string) string {
-	return (scaleList[name][20:60] + scaleList[name][0:20])
+	return (ScaleList[name][20:60] + ScaleList[name][0:20])
 }
 
 func Cj(name string) string {
-	return (scaleList[name][55:60] + scaleList[name][0:55])
+	return (ScaleList[name][55:60] + ScaleList[name][0:55])
 }
 
 func Gj(name string) string {
-	return (scaleList[name][30:60] + scaleList[name][0:30])
+	return (ScaleList[name][30:60] + ScaleList[name][0:30])
 }
 
 func Dj(name string) string {
-	return (scaleList[name][5:60] + scaleList[name][0:5])
+	return (ScaleList[name][5:60] + ScaleList[name][0:5])
 }
 
 func Aj(name string) string {
-	return (scaleList[name][40:60] + scaleList[name][0:40])
+	return (ScaleList[name][40:60] + ScaleList[name][0:40])
 }
 
 func Ej(name string) string {
-	return (scaleList[name][15:60] + scaleList[name][0:15])
+	return (ScaleList[name][15:60] + ScaleList[name][0:15])
 }
 
 func Bj(name string) string {
-	return (scaleList[name][50:60] + scaleList[name][0:50])
+	return (ScaleList[name][50:60] + ScaleList[name][0:50])
 }
 
 func Fn(name string) string {
-	return (scaleList[name][25:60] + scaleList[name][0:25])
+	return (ScaleList[name][25:60] + ScaleList[name][0:25])
 }
 
 func Cn(name string) string {
-	return (scaleList[name])
+	return (ScaleList[name])
 }
 
 func Gn(name string) string {
-	return (scaleList[name][35:60] + scaleList[name][0:35])
+	return (ScaleList[name][35:60] + ScaleList[name][0:35])
 }
 
 func Dn(name string) string {
-	return (scaleList[name][10:60] + scaleList[name][0:10])
+	return (ScaleList[name][10:60] + ScaleList[name][0:10])
 }
 
 func An(name string) string {
-	return (scaleList[name][45:60] + scaleList[name][0:45])
+	return (ScaleList[name][45:60] + ScaleList[name][0:45])
 }
 
 func En(name string) string {
-	return (scaleList[name][20:60] + scaleList[name][0:20])
+	return (ScaleList[name][20:60] + ScaleList[name][0:20])
 }
 
 func Bn(name string) string {
-	return (scaleList[name][55:60] + scaleList[name][0:55])
+	return (ScaleList[name][55:60] + ScaleList[name][0:55])
 }
 
 func Fk(name string) string {
-	return (scaleList[name][30:60] + scaleList[name][0:30])
+	return (ScaleList[name][30:60] + ScaleList[name][0:30])
 }
 
 func Ck(name string) string {
-	return (scaleList[name][5:60] + scaleList[name][0:5])
+	return (ScaleList[name][5:60] + ScaleList[name][0:5])
 }
 
 func Gk(name string) string {
-	return (scaleList[name][40:60] + scaleList[name][0:40])
+	return (ScaleList[name][40:60] + ScaleList[name][0:40])
 }
 
 func Dk(name string) string {
-	return (scaleList[name][15:60] + scaleList[name][0:15])
+	return (ScaleList[name][15:60] + ScaleList[name][0:15])
 }
 
 func Ak(name string) string {
-	return (scaleList[name][50:60] + scaleList[name][0:50])
+	return (ScaleList[name][50:60] + ScaleList[name][0:50])
 }
 
 func Ek(name string) string {
-	return (scaleList[name][25:60] + scaleList[name][0:25])
+	return (ScaleList[name][25:60] + ScaleList[name][0:25])
 }
 
 func Bk(name string) string {
-	return (scaleList[name])
+	return (ScaleList[name])
 }
 
 // Tunings
+
 func BEADGCF(name string) [8]string {
 	a := [8]string{
 		name,
@@ -237,9 +245,6 @@ func DADGBD(name string) [7]string {
 }
 
 func EADGBE(name string) [7]string {
-	if Absent(name) {
-		return SepTacet()
-	}
 	en := En(name)
 	a := [7]string{
 		name,
