@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/reidiiius/goethite/scordatura"
+	sdr "github.com/reidiiius/goethite/scordatura"
 	"os"
 	"sort"
 	"time"
@@ -10,10 +10,18 @@ import (
 
 func main() {
 
-	scordatura.ScaleList["z0"] = scordatura.Zilch()
+	var (
+		menu   []string
+		diadem string
+		tuning func(string) []string
+		epoch  int64
+		phyla  string
+		pegbox []string
+	)
 
-	var menu []string
-	menu = scordatura.Signos()
+	sdr.ScaleList["z0"] = sdr.Tacere()
+
+	menu = sdr.Signos()
 
 	if !sort.StringsAreSorted(menu) {
 		sort.Strings(menu)
@@ -27,21 +35,49 @@ func main() {
 			fmt.Print("\t", menu[i])
 		}
 
-		fmt.Println("")
+		fmt.Print("\n\n")
+		os.Exit(0)
 	}
 
-	tuning := scordatura.EADGBE
+	diadem = "eadgbe"
 
-	epoch := time.Now().UnixNano()
-	phyla := fmt.Sprintf("%s%d", "-eadgbe-v", epoch)
+	switch diadem {
+	case "beadgcf":
+		tuning = sdr.BEADGCF
+
+	case "bfbfb":
+		tuning = sdr.BFBFB
+
+	case "cgdae":
+		tuning = sdr.CGDAE
+
+	case "dadgad":
+		tuning = sdr.DADGAD
+
+	case "dadgbd":
+		tuning = sdr.DADGBD
+
+	case "eadgbe":
+		tuning = sdr.EADGBE
+
+	case "fkbjdn":
+		tuning = sdr.FkBjDn
+
+	default:
+		diadem = "unison"
+		tuning = sdr.Unison
+	}
+
+	epoch = time.Now().UnixNano()
+	phyla = fmt.Sprintf("-%s-v%d", diadem, epoch)
 
 	for i := 1; i < len(os.Args); i++ {
-		if scordatura.Absent(os.Args[i]) {
+		if sdr.Absent(os.Args[i]) {
 			fmt.Println("\n\t" + os.Args[i] + " ?")
 			continue
 		}
 
-		pegbox := tuning(os.Args[i])
+		pegbox = tuning(os.Args[i])
 
 		fmt.Println("")
 		for j := 0; j < len(pegbox); j++ {

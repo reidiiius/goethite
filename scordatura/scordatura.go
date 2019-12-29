@@ -1,5 +1,6 @@
-// Package scordatura provides data and routines to model
-// semigraphic fingerboard diagrams for stringed intruments.
+// Package scordatura provides structured data and routines to model
+// tonal inversion functions of musical pitch collections by manipulating
+// text to display semigraphic fingerboard diagrams of stringed intruments.
 package scordatura
 
 var ScaleList = map[string]string{
@@ -100,15 +101,17 @@ func Absent(name string) bool {
 
 func Signos() []string {
 	var a []string
+
 	for k, _ := range ScaleList {
 		a = append(a, k)
 	}
 	return a
 }
 
-func Zilch() string {
+func Tacere() string {
 	s := ""
-	for i := 0; i < 12; i++ {
+
+	for len(s) < 60 {
 		s += "____ "
 	}
 	return s
@@ -117,93 +120,105 @@ func Zilch() string {
 // Headstock
 
 func Fj(name string) string {
-	return (ScaleList[name][20:60] + ScaleList[name][0:20])
+	return En(name)
 }
 
 func Cj(name string) string {
-	return (ScaleList[name][55:60] + ScaleList[name][0:55])
+	return Bn(name)
 }
 
 func Gj(name string) string {
-	return (ScaleList[name][30:60] + ScaleList[name][0:30])
+	return Fk(name)
 }
 
 func Dj(name string) string {
-	return (ScaleList[name][5:60] + ScaleList[name][0:5])
+	return Ck(name)
 }
 
 func Aj(name string) string {
-	return (ScaleList[name][40:60] + ScaleList[name][0:40])
+	return Gk(name)
 }
 
 func Ej(name string) string {
-	return (ScaleList[name][15:60] + ScaleList[name][0:15])
+	return Dk(name)
 }
 
 func Bj(name string) string {
-	return (ScaleList[name][50:60] + ScaleList[name][0:50])
+	return Ak(name)
 }
 
 func Fn(name string) string {
-	return (ScaleList[name][25:60] + ScaleList[name][0:25])
+	n := 25
+	return (ScaleList[name][n:] + ScaleList[name][:n])
 }
 
 func Cn(name string) string {
-	return (ScaleList[name])
+	n := 0
+	return (ScaleList[name][n:])
 }
 
 func Gn(name string) string {
-	return (ScaleList[name][35:60] + ScaleList[name][0:35])
+	n := 35
+	return (ScaleList[name][n:] + ScaleList[name][:n])
 }
 
 func Dn(name string) string {
-	return (ScaleList[name][10:60] + ScaleList[name][0:10])
+	n := 10
+	return (ScaleList[name][n:] + ScaleList[name][:n])
 }
 
 func An(name string) string {
-	return (ScaleList[name][45:60] + ScaleList[name][0:45])
+	n := 45
+	return (ScaleList[name][n:] + ScaleList[name][:n])
 }
 
 func En(name string) string {
-	return (ScaleList[name][20:60] + ScaleList[name][0:20])
+	n := 20
+	return (ScaleList[name][n:] + ScaleList[name][:n])
 }
 
 func Bn(name string) string {
-	return (ScaleList[name][55:60] + ScaleList[name][0:55])
+	n := 55
+	return (ScaleList[name][n:] + ScaleList[name][:n])
 }
 
 func Fk(name string) string {
-	return (ScaleList[name][30:60] + ScaleList[name][0:30])
+	n := 30
+	return (ScaleList[name][n:] + ScaleList[name][:n])
 }
 
 func Ck(name string) string {
-	return (ScaleList[name][5:60] + ScaleList[name][0:5])
+	n := 5
+	return (ScaleList[name][n:] + ScaleList[name][:n])
 }
 
 func Gk(name string) string {
-	return (ScaleList[name][40:60] + ScaleList[name][0:40])
+	n := 40
+	return (ScaleList[name][n:] + ScaleList[name][:n])
 }
 
 func Dk(name string) string {
-	return (ScaleList[name][15:60] + ScaleList[name][0:15])
+	n := 15
+	return (ScaleList[name][n:] + ScaleList[name][:n])
 }
 
 func Ak(name string) string {
-	return (ScaleList[name][50:60] + ScaleList[name][0:50])
+	n := 50
+	return (ScaleList[name][n:] + ScaleList[name][:n])
 }
 
 func Ek(name string) string {
-	return (ScaleList[name][25:60] + ScaleList[name][0:25])
+	return Fn(name)
 }
 
 func Bk(name string) string {
-	return (ScaleList[name])
+	return Cn(name)
 }
 
 // Tunings
 
-func BEADGCF(name string) [8]string {
-	a := [8]string{
+func BEADGCF(name string) []string {
+	a := []string{
 		name,
 		Fn(name),
 		Cn(name),
@@ -216,14 +231,14 @@ func BEADGCF(name string) [8]string {
 	return a
 }
 
-func BFBFB(name string) [6]string {
+func BFBFB(name string) []string {
 	bn, fn := Bn(name), Fn(name)
-	a := [6]string{name, bn, fn, bn, fn, bn}
+	a := []string{name, bn, fn, bn, fn, bn}
 	return a
 }
 
-func CGDAE(name string) [6]string {
-	a := [6]string{
+func CGDAE(name string) []string {
+	a := []string{
 		name,
 		En(name),
 		An(name),
@@ -234,21 +249,21 @@ func CGDAE(name string) [6]string {
 	return a
 }
 
-func DADGAD(name string) [7]string {
+func DADGAD(name string) []string {
 	an, dn, gn := An(name), Dn(name), Gn(name)
-	a := [7]string{name, dn, an, gn, dn, an, dn}
+	a := []string{name, dn, an, gn, dn, an, dn}
 	return a
 }
 
-func DADGBD(name string) [7]string {
+func DADGBD(name string) []string {
 	an, bn, dn, gn := An(name), Bn(name), Dn(name), Gn(name)
-	a := [7]string{name, dn, bn, gn, dn, an, dn}
+	a := []string{name, dn, bn, gn, dn, an, dn}
 	return a
 }
 
-func EADGBE(name string) [7]string {
+func EADGBE(name string) []string {
 	en := En(name)
-	a := [7]string{
+	a := []string{
 		name,
 		en,
 		Bn(name),
@@ -260,8 +275,13 @@ func EADGBE(name string) [7]string {
 	return a
 }
 
-func FkBjDn(name string) [7]string {
+func FkBjDn(name string) []string {
 	dn, bj, fk := Dn(name), Bj(name), Fk(name)
-	a := [7]string{name, dn, bj, fk, dn, bj, fk}
+	a := []string{name, dn, bj, fk, dn, bj, fk}
+	return a
+}
+
+func Unison(name string) []string {
+	a := []string{name, Cn(name)}
 	return a
 }
