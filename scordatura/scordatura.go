@@ -88,6 +88,41 @@ var ScaleList = map[string]string{
 	"k1j56y7": "____ AuUr NpSn ____ TiHg FeFe HgTi ____ SnNp UrAu ____ ____ ",
 	"k2j56y7": "NpCu ____ ____ FePu HgHg PuFe SnTi ____ CuNp PbAu ____ ____ "}
 
+var PitchFork = map[string]byte{
+	"Bk": 0,
+	"Cn": 0,
+
+	"Ck": 5,
+	"Dj": 5,
+
+	"Dn": 10,
+
+	"Dk": 15,
+	"Ej": 15,
+
+	"En": 20,
+	"Fj": 20,
+
+	"Ek": 25,
+	"Fn": 25,
+
+	"Fk": 30,
+	"Gj": 30,
+
+	"Gn": 35,
+
+	"Gk": 40,
+	"Aj": 40,
+
+	"An": 45,
+
+	"Ak": 50,
+	"Bj": 50,
+
+	"Bn": 55,
+	"Cj": 55,
+}
+
 // Utilities
 
 func Absent(name string) bool {
@@ -117,171 +152,66 @@ func Tacere() string {
 	return s
 }
 
-// Headstock
-
-func Fj(name string) string {
-	return En(name)
-}
-
-func Cj(name string) string {
-	return Bn(name)
-}
-
-func Gj(name string) string {
-	return Fk(name)
-}
-
-func Dj(name string) string {
-	return Ck(name)
-}
-
-func Aj(name string) string {
-	return Gk(name)
-}
-
-func Ej(name string) string {
-	return Dk(name)
-}
-
-func Bj(name string) string {
-	return Ak(name)
-}
-
-func Fn(name string) string {
-	n := 25
+func HeadStock(name, tone string) string {
+	n := PitchFork[tone]
 	return (ScaleList[name][n:] + ScaleList[name][:n])
 }
 
-func Cn(name string) string {
-	n := 0
-	return (ScaleList[name][n:])
-}
+func LatticeWork(name string, tuned []string) []string {
+	target := []string{name}
 
-func Gn(name string) string {
-	n := 35
-	return (ScaleList[name][n:] + ScaleList[name][:n])
-}
-
-func Dn(name string) string {
-	n := 10
-	return (ScaleList[name][n:] + ScaleList[name][:n])
-}
-
-func An(name string) string {
-	n := 45
-	return (ScaleList[name][n:] + ScaleList[name][:n])
-}
-
-func En(name string) string {
-	n := 20
-	return (ScaleList[name][n:] + ScaleList[name][:n])
-}
-
-func Bn(name string) string {
-	n := 55
-	return (ScaleList[name][n:] + ScaleList[name][:n])
-}
-
-func Fk(name string) string {
-	n := 30
-	return (ScaleList[name][n:] + ScaleList[name][:n])
-}
-
-func Ck(name string) string {
-	n := 5
-	return (ScaleList[name][n:] + ScaleList[name][:n])
-}
-
-func Gk(name string) string {
-	n := 40
-	return (ScaleList[name][n:] + ScaleList[name][:n])
-}
-
-func Dk(name string) string {
-	n := 15
-	return (ScaleList[name][n:] + ScaleList[name][:n])
-}
-
-func Ak(name string) string {
-	n := 50
-	return (ScaleList[name][n:] + ScaleList[name][:n])
-}
-
-func Ek(name string) string {
-	return Fn(name)
-}
-
-func Bk(name string) string {
-	return Cn(name)
+	for _, vase := range tuned {
+		target = append(target, HeadStock(name, vase))
+	}
+	return target
 }
 
 // Tunings
 
 func BEADGCF(name string) []string {
-	a := []string{
-		name,
-		Fn(name),
-		Cn(name),
-		Gn(name),
-		Dn(name),
-		An(name),
-		En(name),
-		Bn(name),
-	}
-	return a
+	tuned := []string{"Fn", "Cn", "Gn", "Dn", "An", "En", "Bn"}
+	board := LatticeWork(name, tuned)
+	return board
 }
 
 func BFBFB(name string) []string {
-	bn, fn := Bn(name), Fn(name)
-	a := []string{name, bn, fn, bn, fn, bn}
-	return a
+	tuned := []string{"Bn", "Fn", "Bn", "Fn", "Bn"}
+	board := LatticeWork(name, tuned)
+	return board
 }
 
 func CGDAE(name string) []string {
-	a := []string{
-		name,
-		En(name),
-		An(name),
-		Dn(name),
-		Gn(name),
-		Cn(name),
-	}
-	return a
+	tuned := []string{"En", "An", "Dn", "Gn", "Cn"}
+	board := LatticeWork(name, tuned)
+	return board
 }
 
 func DADGAD(name string) []string {
-	an, dn, gn := An(name), Dn(name), Gn(name)
-	a := []string{name, dn, an, gn, dn, an, dn}
-	return a
+	tuned := []string{"Dn", "An", "Gn", "Dn", "An", "Dn"}
+	board := LatticeWork(name, tuned)
+	return board
 }
 
 func DADGBD(name string) []string {
-	an, bn, dn, gn := An(name), Bn(name), Dn(name), Gn(name)
-	a := []string{name, dn, bn, gn, dn, an, dn}
-	return a
+	tuned := []string{"Dn", "Bn", "Gn", "Dn", "An", "Dn"}
+	board := LatticeWork(name, tuned)
+	return board
 }
 
 func EADGBE(name string) []string {
-	en := En(name)
-	a := []string{
-		name,
-		en,
-		Bn(name),
-		Gn(name),
-		Dn(name),
-		An(name),
-		en,
-	}
-	return a
+	tuned := []string{"En", "Bn", "Gn", "Dn", "An", "En"}
+	board := LatticeWork(name, tuned)
+	return board
 }
 
 func FkBjDn(name string) []string {
-	dn, bj, fk := Dn(name), Bj(name), Fk(name)
-	a := []string{name, dn, bj, fk, dn, bj, fk}
-	return a
+	tuned := []string{"Dn", "Bj", "Fk", "Dn", "Bj", "Fk"}
+	board := LatticeWork(name, tuned)
+	return board
 }
 
 func Unison(name string) []string {
-	a := []string{name, Cn(name)}
-	return a
+	tuned := []string{"Cn", "Cn"}
+	board := LatticeWork(name, tuned)
+	return board
 }

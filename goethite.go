@@ -11,12 +11,10 @@ import (
 func main() {
 
 	var (
-		menu   []string
-		diadem string
-		tuning func(string) []string
-		epoch  int64
-		phyla  string
-		pegbox []string
+		menu, pegbox  []string
+		diadem, phyla string
+		tuning        func(string) []string
+		epoch         int64
 	)
 
 	sdr.ScaleList["z0"] = sdr.Tacere()
