@@ -31,10 +31,12 @@ func main() {
 		tabular(menu)
 	}
 
-	signat, _ := regexp.MatchString(`^[jkn][0-7]+([jknxy][1-7]+)*$`, os.Args[1])
+	cargo = strings.ToLower(os.Args[1])
+
+	signat, _ := regexp.MatchString(`^[jkn]\d+([jknxy]\d+)*$`, cargo)
 
 	if !signat {
-		diadem = os.Args[1]
+		diadem = cargo
 		os.Args = os.Args[1:]
 
 		if len(os.Args) < 2 {
@@ -67,7 +69,7 @@ func main() {
 		tuning = sdr.FkBjDn
 
 	default:
-		fmt.Println("\n\t" + os.Args[0] + " ?")
+		fmt.Printf("\n\t%s ?\n", os.Args[0])
 		diadem = "unison"
 		tuning = sdr.Unison
 	}
