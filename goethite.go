@@ -4,6 +4,7 @@ import (
 	"fmt"
 	sdr "github.com/reidiiius/goethite/scordatura"
 	"os"
+	"regexp"
 	"sort"
 	"strings"
 	"time"
@@ -13,7 +14,7 @@ func main() {
 
 	var (
 		diadem, phyla, cargo string
-		menu, pegbox         []string
+		pegbox, menu         []string
 		tuning               func(string) []string
 		epoch                int64
 	)
@@ -27,18 +28,21 @@ func main() {
 	}
 
 	if len(os.Args) < 2 {
-		for i := 0; i < len(menu); i++ {
-			if i%7 == 0 {
-				fmt.Println("")
-			}
-			fmt.Print("\t", menu[i])
-		}
-
-		fmt.Print("\n\n")
-		os.Exit(0)
+		tabular(menu)
 	}
 
-	diadem = "eadgbe"
+	signat, _ := regexp.MatchString(`^[jkn][0-7]+([jknxy][1-7]+)*$`, os.Args[1])
+
+	if !signat {
+		diadem = os.Args[1]
+		os.Args = os.Args[1:]
+
+		if len(os.Args) < 2 {
+			tabular(menu)
+		}
+	} else {
+		diadem = "eadgbe"
+	}
 
 	switch diadem {
 	case "beadgcf":
@@ -63,6 +67,7 @@ func main() {
 		tuning = sdr.FkBjDn
 
 	default:
+		fmt.Println("\n\t" + os.Args[0] + " ?")
 		diadem = "unison"
 		tuning = sdr.Unison
 	}
@@ -96,21 +101,39 @@ func main() {
 // Subroutines
 
 func transcribe(phrase string) string {
-	metals := []string{
-		"Hg", "Pu", "Sn", "Mn", "Ur", "Cu",
-		"Pb", "Au", "Np", "Ag", "Ti", "Fe",
-	}
 
-	cipher := []string{
-		"v9", "zE", "t7", "p3", "xC", "r5",
-		"wA", "u8", "yD", "s6", "o2", "q4",
+	cipher := map[string]string{
+		"Hg": "v9",
+		"Pu": "zE",
+		"Sn": "t7",
+		"Mn": "p3",
+		"Ur": "xC",
+		"Cu": "r5",
+		"Pb": "wA",
+		"Au": "u8",
+		"Np": "yD",
+		"Ag": "s6",
+		"Ti": "o2",
+		"Fe": "q4",
 	}
 
 	result := phrase
 
-	for windex, element := range metals {
-		result = strings.ReplaceAll(result, element, cipher[windex])
+	for face, veil := range cipher {
+		result = strings.ReplaceAll(result, face, veil)
 	}
 
 	return result
+}
+
+func tabular(menu []string) {
+	for i := 0; i < len(menu); i++ {
+		if i%7 == 0 {
+			fmt.Println("")
+		}
+		fmt.Print("\t", menu[i])
+	}
+
+	fmt.Print("\n\n")
+	os.Exit(0)
 }
