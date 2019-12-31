@@ -5,6 +5,7 @@ import (
 	sdr "github.com/reidiiius/goethite/scordatura"
 	"os"
 	"sort"
+	"strings"
 	"time"
 )
 
@@ -17,7 +18,7 @@ func main() {
 		epoch         int64
 	)
 
-	sdr.ScaleList["z0"] = sdr.Tacere()
+	sdr.ScaleList["z0"] = strings.Repeat("____ ", 12)
 
 	menu = sdr.Signos()
 

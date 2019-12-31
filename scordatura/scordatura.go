@@ -125,93 +125,82 @@ var PitchFork = map[string]byte{
 
 // Utilities
 
-func Absent(name string) bool {
-	_, ok := ScaleList[name]
+func Absent(argot string) bool {
+	_, ok := ScaleList[argot]
 
-	if ok {
-		return false
-	}
-	return true
+	return !ok
 }
 
 func Signos() []string {
-	var a []string
+	var keystones []string
 
-	for k, _ := range ScaleList {
-		a = append(a, k)
+	for keynotes, _ := range ScaleList {
+		keystones = append(keystones, keynotes)
 	}
-	return a
+	return keystones
 }
 
-func Tacere() string {
-	s := ""
-
-	for len(s) < 60 {
-		s += "____ "
-	}
-	return s
+func HeadStock(argot, tone string) string {
+	spandex := PitchFork[tone]
+	course := ScaleList[argot][spandex:] + ScaleList[argot][:spandex]
+	return course
 }
 
-func HeadStock(name, tone string) string {
-	n := PitchFork[tone]
-	return (ScaleList[name][n:] + ScaleList[name][:n])
-}
+func LatticeWork(argot string, tuned []string) []string {
+	board := []string{argot}
 
-func LatticeWork(name string, tuned []string) []string {
-	target := []string{name}
-
-	for _, vase := range tuned {
-		target = append(target, HeadStock(name, vase))
+	for _, tone := range tuned {
+		board = append(board, HeadStock(argot, tone))
 	}
-	return target
+	return board
 }
 
 // Tunings
 
-func BEADGCF(name string) []string {
+func BEADGCF(argot string) []string {
 	tuned := []string{"Fn", "Cn", "Gn", "Dn", "An", "En", "Bn"}
-	board := LatticeWork(name, tuned)
+	board := LatticeWork(argot, tuned)
 	return board
 }
 
-func BFBFB(name string) []string {
+func BFBFB(argot string) []string {
 	tuned := []string{"Bn", "Fn", "Bn", "Fn", "Bn"}
-	board := LatticeWork(name, tuned)
+	board := LatticeWork(argot, tuned)
 	return board
 }
 
-func CGDAE(name string) []string {
+func CGDAE(argot string) []string {
 	tuned := []string{"En", "An", "Dn", "Gn", "Cn"}
-	board := LatticeWork(name, tuned)
+	board := LatticeWork(argot, tuned)
 	return board
 }
 
-func DADGAD(name string) []string {
+func DADGAD(argot string) []string {
 	tuned := []string{"Dn", "An", "Gn", "Dn", "An", "Dn"}
-	board := LatticeWork(name, tuned)
+	board := LatticeWork(argot, tuned)
 	return board
 }
 
-func DADGBD(name string) []string {
+func DADGBD(argot string) []string {
 	tuned := []string{"Dn", "Bn", "Gn", "Dn", "An", "Dn"}
-	board := LatticeWork(name, tuned)
+	board := LatticeWork(argot, tuned)
 	return board
 }
 
-func EADGBE(name string) []string {
+func EADGBE(argot string) []string {
 	tuned := []string{"En", "Bn", "Gn", "Dn", "An", "En"}
-	board := LatticeWork(name, tuned)
+	board := LatticeWork(argot, tuned)
 	return board
 }
 
-func FkBjDn(name string) []string {
+func FkBjDn(argot string) []string {
 	tuned := []string{"Dn", "Bj", "Fk", "Dn", "Bj", "Fk"}
-	board := LatticeWork(name, tuned)
+	board := LatticeWork(argot, tuned)
 	return board
 }
 
-func Unison(name string) []string {
-	tuned := []string{"Cn", "Cn"}
-	board := LatticeWork(name, tuned)
+func Unison(argot string) []string {
+	tuned := []string{"Cn"}
+	board := LatticeWork(argot, tuned)
 	return board
 }
