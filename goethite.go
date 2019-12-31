@@ -12,10 +12,10 @@ import (
 func main() {
 
 	var (
-		menu, pegbox  []string
-		diadem, phyla string
-		tuning        func(string) []string
-		epoch         int64
+		diadem, phyla, cargo string
+		menu, pegbox         []string
+		tuning               func(string) []string
+		epoch                int64
 	)
 
 	sdr.ScaleList["z0"] = strings.Repeat("____ ", 12)
@@ -71,22 +71,46 @@ func main() {
 	phyla = fmt.Sprintf("-%s-v%d", diadem, epoch)
 
 	for i := 1; i < len(os.Args); i++ {
-		if sdr.Absent(os.Args[i]) {
-			fmt.Println("\n\t" + os.Args[i] + " ?")
+		cargo = strings.ToLower(os.Args[i])
+
+		if sdr.Absent(cargo) {
+			fmt.Println("\n\t" + cargo + " ?")
 			continue
 		}
 
-		pegbox = tuning(os.Args[i])
+		pegbox = tuning(cargo)
 
 		fmt.Println("")
 		for j := 0; j < len(pegbox); j++ {
 			if j == 0 {
 				fmt.Println("\t" + pegbox[j] + phyla)
 			} else {
-				fmt.Println("\t" + pegbox[j])
+				fmt.Println("\t" + transcribe(pegbox[j]))
 			}
 		}
 	}
 
 	fmt.Println("")
+}
+
+// Subroutines
+
+func transcribe(phrase string) string {
+	metals := []string{
+		"Hg", "Pu", "Sn", "Mn", "Ur", "Cu",
+		"Pb", "Au", "Np", "Ag", "Ti", "Fe",
+	}
+
+	cipher := []string{
+		"v9", "zE", "t7", "p3", "xC", "r5",
+		"wA", "u8", "yD", "s6", "o2", "q4",
+	}
+
+	result := phrase
+
+	for windex, element := range metals {
+		result = strings.ReplaceAll(result, element, cipher[windex])
+	}
+
+	return result
 }

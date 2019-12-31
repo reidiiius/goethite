@@ -142,15 +142,20 @@ func Signos() []string {
 
 func HeadStock(argot, tone string) string {
 	spandex := PitchFork[tone]
-	course := ScaleList[argot][spandex:] + ScaleList[argot][:spandex]
+	temple := ScaleList[argot]
+	course := temple[spandex:] + temple[:spandex]
 	return course
 }
 
 func LatticeWork(argot string, tuned []string) []string {
-	board := []string{argot}
+	var course string
+	var board []string
+
+	board = append(board, argot)
 
 	for _, tone := range tuned {
-		board = append(board, HeadStock(argot, tone))
+		course = HeadStock(argot, tone)
+		board = append(board, course)
 	}
 	return board
 }
