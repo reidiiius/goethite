@@ -13,10 +13,11 @@ import (
 func main() {
 
 	var (
-		diadem, phyla, cargo string
-		pegbox, menu         []string
+		diadem, phyla, barge string
+		pegbox, cargo, menu  []string
 		tuning               func(string) []string
 		epoch                int64
+		large                int
 	)
 
 	sdr.ScaleList["z0"] = strings.Repeat("____ ", 12)
@@ -27,19 +28,22 @@ func main() {
 		sort.Strings(menu)
 	}
 
-	if len(os.Args) < 2 {
+	cargo = make([]string, len(os.Args))
+	large = copy(cargo, os.Args[0:])
+
+	if large < 2 {
 		tabular(menu)
 	}
 
-	cargo = strings.ToLower(os.Args[1])
+	barge = strings.ToLower(cargo[1])
 
-	signat, _ := regexp.MatchString(`^[jkn]\d+([jknxy]\d+)*$`, cargo)
+	signat, _ := regexp.MatchString(`^[jkn]\d+([jknxy]\d+)*$`, barge)
 
 	if !signat {
-		diadem = cargo
-		os.Args = os.Args[1:]
+		diadem = barge
+		cargo = cargo[1:]
 
-		if len(os.Args) < 2 {
+		if len(cargo) < 2 {
 			tabular(menu)
 		}
 	} else {
@@ -69,7 +73,7 @@ func main() {
 		tuning = sdr.FkBjDn
 
 	default:
-		fmt.Printf("\n\t%s ?\n", os.Args[0])
+		fmt.Printf("\n\t%s ?\n", cargo[0])
 		diadem = "unison"
 		tuning = sdr.Unison
 	}
@@ -77,15 +81,15 @@ func main() {
 	epoch = time.Now().UnixNano()
 	phyla = fmt.Sprintf("-%s-v%d", diadem, epoch)
 
-	for i := 1; i < len(os.Args); i++ {
-		cargo = strings.ToLower(os.Args[i])
+	for i := 1; i < len(cargo); i++ {
+		barge = strings.ToLower(cargo[i])
 
-		if sdr.Absent(cargo) {
-			fmt.Println("\n\t" + cargo + " ?")
+		if sdr.Absent(barge) {
+			fmt.Println("\n\t" + barge + " ?")
 			continue
 		}
 
-		pegbox = tuning(cargo)
+		pegbox = tuning(barge)
 
 		fmt.Println("")
 		for j := 0; j < len(pegbox); j++ {
