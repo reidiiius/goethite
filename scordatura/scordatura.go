@@ -134,7 +134,7 @@ func Absent(argot string) bool {
 func Signos() []string {
 	var keystones []string
 
-	for keynotes, _ := range ScaleList {
+	for keynotes := range ScaleList {
 		keystones = append(keystones, keynotes)
 	}
 	return keystones
