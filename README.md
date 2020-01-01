@@ -1,8 +1,6 @@
 # Goethite
 Cartography
 
-    [![GoDoc](https://godoc.org/github.com/reidiiius/goethite?status.svg)](https://godoc.org/github.com/reidiiius/goethite)
-
 ---
 
 ### Download
