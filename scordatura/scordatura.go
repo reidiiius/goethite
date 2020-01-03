@@ -5,7 +5,6 @@ package scordatura
 
 type Cipher struct {
 	Arcane, Decans, Septets map[string]string
-	pitchfork               map[string]byte
 }
 
 var Schema = Cipher{
@@ -40,41 +39,6 @@ var Schema = Cipher{
 		"Ag": "s",
 		"Ti": "o",
 		"Fe": "q",
-	},
-
-	pitchfork: map[string]byte{
-		"Bk": 0,
-		"Cn": 0,
-
-		"Ck": 5,
-		"Dj": 5,
-
-		"Dn": 10,
-
-		"Dk": 15,
-		"Ej": 15,
-
-		"En": 20,
-		"Fj": 20,
-
-		"Ek": 25,
-		"Fn": 25,
-
-		"Fk": 30,
-		"Gj": 30,
-
-		"Gn": 35,
-
-		"Gk": 40,
-		"Aj": 40,
-
-		"An": 45,
-
-		"Ak": 50,
-		"Bj": 50,
-
-		"Bn": 55,
-		"Cj": 55,
 	},
 
 	Septets: map[string]string{
@@ -164,6 +128,41 @@ var Schema = Cipher{
 	},
 }
 
+var pitchfork = map[string]byte{
+	"Bk": 0,
+	"Cn": 0,
+
+	"Ck": 5,
+	"Dj": 5,
+
+	"Dn": 10,
+
+	"Dk": 15,
+	"Ej": 15,
+
+	"En": 20,
+	"Fj": 20,
+
+	"Ek": 25,
+	"Fn": 25,
+
+	"Fk": 30,
+	"Gj": 30,
+
+	"Gn": 35,
+
+	"Gk": 40,
+	"Aj": 40,
+
+	"An": 45,
+
+	"Ak": 50,
+	"Bj": 50,
+
+	"Bn": 55,
+	"Cj": 55,
+}
+
 // Utilities
 
 func Absent(argot string) bool {
@@ -182,7 +181,7 @@ func Signos() []string {
 }
 
 func HeadStock(argot, tone string) string {
-	spandex := Schema.pitchfork[tone]
+	spandex := pitchfork[tone]
 	temple := Schema.Septets[argot]
 	course := temple[spandex:] + temple[:spandex]
 	return course
