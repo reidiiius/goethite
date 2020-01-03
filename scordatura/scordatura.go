@@ -163,6 +163,24 @@ var pitchfork = map[string]byte{
 	"Cj": 55,
 }
 
+var accidentals = map[string][]string{
+	"beadgcf": []string{"Fn", "Cn", "Gn", "Dn", "An", "En", "Bn"},
+
+	"bfbfb": []string{"Bn", "Fn", "Bn", "Fn", "Bn"},
+
+	"cgdae": []string{"En", "An", "Dn", "Gn", "Cn"},
+
+	"dadgad": []string{"Dn", "An", "Gn", "Dn", "An", "Dn"},
+
+	"dadgbd": []string{"Dn", "Bn", "Gn", "Dn", "An", "Dn"},
+
+	"eadgbe": []string{"En", "Bn", "Gn", "Dn", "An", "En"},
+
+	"fkbjdn": []string{"Dn", "Bj", "Fk", "Dn", "Bj", "Fk"},
+
+	"unison": []string{"Cn"},
+}
+
 // Utilities
 
 func Absent(argot string) bool {
@@ -200,52 +218,8 @@ func LatticeWork(argot string, tuned []string) []string {
 	return board
 }
 
-// Tunings
-
-func BEADGCF(argot string) []string {
-	tuned := []string{"Fn", "Cn", "Gn", "Dn", "An", "En", "Bn"}
-	board := LatticeWork(argot, tuned)
-	return board
-}
-
-func BFBFB(argot string) []string {
-	tuned := []string{"Bn", "Fn", "Bn", "Fn", "Bn"}
-	board := LatticeWork(argot, tuned)
-	return board
-}
-
-func CGDAE(argot string) []string {
-	tuned := []string{"En", "An", "Dn", "Gn", "Cn"}
-	board := LatticeWork(argot, tuned)
-	return board
-}
-
-func DADGAD(argot string) []string {
-	tuned := []string{"Dn", "An", "Gn", "Dn", "An", "Dn"}
-	board := LatticeWork(argot, tuned)
-	return board
-}
-
-func DADGBD(argot string) []string {
-	tuned := []string{"Dn", "Bn", "Gn", "Dn", "An", "Dn"}
-	board := LatticeWork(argot, tuned)
-	return board
-}
-
-func EADGBE(argot string) []string {
-	tuned := []string{"En", "Bn", "Gn", "Dn", "An", "En"}
-	board := LatticeWork(argot, tuned)
-	return board
-}
-
-func FkBjDn(argot string) []string {
-	tuned := []string{"Dn", "Bj", "Fk", "Dn", "Bj", "Fk"}
-	board := LatticeWork(argot, tuned)
-	return board
-}
-
-func Unison(argot string) []string {
-	tuned := []string{"Cn"}
+func Chordophone(argot, notes string) []string {
+	tuned := accidentals[notes]
 	board := LatticeWork(argot, tuned)
 	return board
 }

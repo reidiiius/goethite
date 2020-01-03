@@ -15,7 +15,6 @@ func main() {
 	var (
 		diadem, phyla, barge string
 		pegbox, cargo, menu  []string
-		tuning               func(string) []string
 		epoch                int64
 		items                int
 	)
@@ -52,31 +51,32 @@ func main() {
 
 	switch diadem {
 	case "beadgcf":
-		tuning = sdr.BEADGCF
+		goto passage
 
 	case "bfbfb":
-		tuning = sdr.BFBFB
+		goto passage
 
 	case "cgdae":
-		tuning = sdr.CGDAE
+		goto passage
 
 	case "dadgad":
-		tuning = sdr.DADGAD
+		goto passage
 
 	case "dadgbd":
-		tuning = sdr.DADGBD
+		goto passage
 
 	case "eadgbe":
-		tuning = sdr.EADGBE
+		goto passage
 
 	case "fkbjdn":
-		tuning = sdr.FkBjDn
+		goto passage
 
 	default:
 		fmt.Printf("\n\t%s ?\n", cargo[0])
 		diadem = "unison"
-		tuning = sdr.Unison
 	}
+
+passage:
 
 	epoch = time.Now().UnixNano()
 	phyla = fmt.Sprintf("-%s-v%d", diadem, epoch)
@@ -89,7 +89,7 @@ func main() {
 			continue
 		}
 
-		pegbox = tuning(barge)
+		pegbox = sdr.Chordophone(barge, diadem)
 
 		fmt.Println("")
 		for j := 0; j < len(pegbox); j++ {
