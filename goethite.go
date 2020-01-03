@@ -10,6 +10,43 @@ import (
 	"time"
 )
 
+type Cipher struct {
+	arcane, decans map[string]string
+}
+
+var schema = Cipher{
+	arcane: map[string]string{
+		"Hg": "9",
+		"Pu": "R",
+		"Sn": "7",
+		"Mn": "3",
+		"Ur": "P",
+		"Cu": "5",
+		"Pb": "N",
+		"__": "-",
+		"Au": "8",
+		"Np": "Q",
+		"Ag": "6",
+		"Ti": "2",
+		"Fe": "4",
+	},
+	decans: map[string]string{
+		"Hg": "v",
+		"Pu": "z",
+		"Sn": "t",
+		"Mn": "p",
+		"Ur": "x",
+		"Cu": "r",
+		"Pb": "w",
+		"__": "_",
+		"Au": "u",
+		"Np": "y",
+		"Ag": "s",
+		"Ti": "o",
+		"Fe": "q",
+	},
+}
+
 func main() {
 
 	var (
@@ -17,7 +54,7 @@ func main() {
 		pegbox, cargo, menu  []string
 		tuning               func(string) []string
 		epoch                int64
-		large                int
+		items                int
 	)
 
 	sdr.ScaleList["z0"] = strings.Repeat("____ ", 12)
@@ -29,9 +66,9 @@ func main() {
 	}
 
 	cargo = make([]string, len(os.Args))
-	large = copy(cargo, os.Args[0:])
+	items = copy(cargo, os.Args[0:])
 
-	if large < 2 {
+	if items < 2 {
 		tabular(menu)
 	}
 
@@ -108,24 +145,9 @@ func main() {
 
 func transcribe(phrase string) string {
 
-	cipher := map[string]string{
-		"Hg": "v9",
-		"Pu": "zE",
-		"Sn": "t7",
-		"Mn": "p3",
-		"Ur": "xC",
-		"Cu": "r5",
-		"Pb": "wA",
-		"Au": "u8",
-		"Np": "yD",
-		"Ag": "s6",
-		"Ti": "o2",
-		"Fe": "q4",
-	}
-
 	result := phrase
 
-	for face, veil := range cipher {
+	for face, veil := range schema.decans {
 		result = strings.ReplaceAll(result, face, veil)
 	}
 
