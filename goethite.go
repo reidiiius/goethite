@@ -10,43 +10,6 @@ import (
 	"time"
 )
 
-type Cipher struct {
-	arcane, decans map[string]string
-}
-
-var schema = Cipher{
-	arcane: map[string]string{
-		"Hg": "9",
-		"Pu": "R",
-		"Sn": "7",
-		"Mn": "3",
-		"Ur": "P",
-		"Cu": "5",
-		"Pb": "N",
-		"__": "-",
-		"Au": "8",
-		"Np": "Q",
-		"Ag": "6",
-		"Ti": "2",
-		"Fe": "4",
-	},
-	decans: map[string]string{
-		"Hg": "v",
-		"Pu": "z",
-		"Sn": "t",
-		"Mn": "p",
-		"Ur": "x",
-		"Cu": "r",
-		"Pb": "w",
-		"__": "_",
-		"Au": "u",
-		"Np": "y",
-		"Ag": "s",
-		"Ti": "o",
-		"Fe": "q",
-	},
-}
-
 func main() {
 
 	var (
@@ -57,7 +20,7 @@ func main() {
 		items                int
 	)
 
-	sdr.ScaleList["z0"] = strings.Repeat("____ ", 12)
+	sdr.Schema.Septets["z0"] = strings.Repeat("____ ", 12)
 
 	menu = sdr.Signos()
 
@@ -74,7 +37,7 @@ func main() {
 
 	barge = strings.ToLower(cargo[1])
 
-	signat, _ := regexp.MatchString(`^[jkn]\d+([jknxy]\d+)*$`, barge)
+	signat, _ := regexp.MatchString(`^[jknz]\d+([jknxy]\d+)*$`, barge)
 
 	if !signat {
 		diadem = barge
@@ -144,10 +107,9 @@ func main() {
 // Subroutines
 
 func transcribe(phrase string) string {
-
 	result := phrase
 
-	for face, veil := range schema.decans {
+	for face, veil := range sdr.Schema.Arcane {
 		result = strings.ReplaceAll(result, face, veil)
 	}
 
