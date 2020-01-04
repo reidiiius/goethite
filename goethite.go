@@ -36,6 +36,17 @@ func main() {
 
 	barge = strings.ToLower(cargo[1])
 
+	pegbox = []string{
+		"beadgcf",
+		"bfbfb",
+		"cgdae",
+		"dadgad",
+		"dadgbd",
+		"eadgbe",
+		"fkbjdn",
+		"unison",
+	}
+
 	signat, _ := regexp.MatchString(`^[jknz]\d+([jknxy]\d+)*$`, barge)
 
 	if !signat {
@@ -46,27 +57,26 @@ func main() {
 			tabular(menu)
 		}
 	} else {
-		diadem = "eadgbe"
+		diadem = pegbox[5]
 	}
 
 	switch diadem {
-	case "beadgcf":
-
-	case "bfbfb":
-
-	case "cgdae":
-
-	case "dadgad":
-
-	case "dadgbd":
-
-	case "eadgbe":
-
-	case "fkbjdn":
-
+	case pegbox[0]:
+	case pegbox[1]:
+	case pegbox[2]:
+	case pegbox[3]:
+	case pegbox[4]:
+	case pegbox[5]:
+	case pegbox[6]:
+	case pegbox[7]:
 	default:
-		fmt.Printf("\n\t%s ?\n", cargo[0])
-		diadem = "unison"
+		fmt.Printf("\n\t%s ?\n\n", cargo[0])
+
+		for _, v := range pegbox {
+			fmt.Printf("\t\t%s\n", v)
+		}
+
+		diadem = pegbox[7]
 	}
 
 	epoch = time.Now().UnixNano()
@@ -94,8 +104,6 @@ func main() {
 
 	fmt.Println("")
 }
-
-// Subroutines
 
 func transcribe(phrase string) string {
 	result := phrase

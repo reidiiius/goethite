@@ -7,6 +7,11 @@ type Cipher struct {
 	Arcane, Decans, Septets map[string]string
 }
 
+type Tuning struct {
+	chromium  map[string][]string
+	pitchfork map[string]byte
+}
+
 var Schema = Cipher{
 
 	Arcane: map[string]string{
@@ -128,57 +133,60 @@ var Schema = Cipher{
 	},
 }
 
-var pitchfork = map[string]byte{
-	"Bk": 0,
-	"Cn": 0,
+var harmonic = Tuning{
 
-	"Ck": 5,
-	"Dj": 5,
+	chromium: map[string][]string{
+		"beadgcf": []string{"Fn", "Cn", "Gn", "Dn", "An", "En", "Bn"},
 
-	"Dn": 10,
+		"bfbfb": []string{"Bn", "Fn", "Bn", "Fn", "Bn"},
 
-	"Dk": 15,
-	"Ej": 15,
+		"cgdae": []string{"En", "An", "Dn", "Gn", "Cn"},
 
-	"En": 20,
-	"Fj": 20,
+		"dadgad": []string{"Dn", "An", "Gn", "Dn", "An", "Dn"},
 
-	"Ek": 25,
-	"Fn": 25,
+		"dadgbd": []string{"Dn", "Bn", "Gn", "Dn", "An", "Dn"},
 
-	"Fk": 30,
-	"Gj": 30,
+		"eadgbe": []string{"En", "Bn", "Gn", "Dn", "An", "En"},
 
-	"Gn": 35,
+		"fkbjdn": []string{"Dn", "Bj", "Fk", "Dn", "Bj", "Fk"},
 
-	"Gk": 40,
-	"Aj": 40,
+		"unison": []string{"Cn"},
+	},
 
-	"An": 45,
+	pitchfork: map[string]byte{
+		"Bk": 0,
+		"Cn": 0,
 
-	"Ak": 50,
-	"Bj": 50,
+		"Ck": 5,
+		"Dj": 5,
 
-	"Bn": 55,
-	"Cj": 55,
-}
+		"Dn": 10,
 
-var accidentals = map[string][]string{
-	"beadgcf": []string{"Fn", "Cn", "Gn", "Dn", "An", "En", "Bn"},
+		"Dk": 15,
+		"Ej": 15,
 
-	"bfbfb": []string{"Bn", "Fn", "Bn", "Fn", "Bn"},
+		"En": 20,
+		"Fj": 20,
 
-	"cgdae": []string{"En", "An", "Dn", "Gn", "Cn"},
+		"Ek": 25,
+		"Fn": 25,
 
-	"dadgad": []string{"Dn", "An", "Gn", "Dn", "An", "Dn"},
+		"Fk": 30,
+		"Gj": 30,
 
-	"dadgbd": []string{"Dn", "Bn", "Gn", "Dn", "An", "Dn"},
+		"Gn": 35,
 
-	"eadgbe": []string{"En", "Bn", "Gn", "Dn", "An", "En"},
+		"Gk": 40,
+		"Aj": 40,
 
-	"fkbjdn": []string{"Dn", "Bj", "Fk", "Dn", "Bj", "Fk"},
+		"An": 45,
 
-	"unison": []string{"Cn"},
+		"Ak": 50,
+		"Bj": 50,
+
+		"Bn": 55,
+		"Cj": 55,
+	},
 }
 
 func Absent(argot string) bool {
@@ -197,7 +205,7 @@ func Signos() []string {
 }
 
 func HeadStock(argot, tone string) string {
-	spandex := pitchfork[tone]
+	spandex := harmonic.pitchfork[tone]
 	temple := Schema.Septets[argot]
 	course := temple[spandex:] + temple[:spandex]
 	return course
@@ -217,7 +225,7 @@ func LatticeWork(argot string, tuned []string) []string {
 }
 
 func Chordophone(argot, notes string) []string {
-	tuned := accidentals[notes]
+	tuned := harmonic.chromium[notes]
 	board := LatticeWork(argot, tuned)
 	return board
 }
