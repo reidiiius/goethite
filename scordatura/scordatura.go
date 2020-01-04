@@ -181,8 +181,6 @@ var accidentals = map[string][]string{
 	"unison": []string{"Cn"},
 }
 
-// Utilities
-
 func Absent(argot string) bool {
 	_, ok := Schema.Septets[argot]
 

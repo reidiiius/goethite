@@ -51,32 +51,23 @@ func main() {
 
 	switch diadem {
 	case "beadgcf":
-		goto passage
 
 	case "bfbfb":
-		goto passage
 
 	case "cgdae":
-		goto passage
 
 	case "dadgad":
-		goto passage
 
 	case "dadgbd":
-		goto passage
 
 	case "eadgbe":
-		goto passage
 
 	case "fkbjdn":
-		goto passage
 
 	default:
 		fmt.Printf("\n\t%s ?\n", cargo[0])
 		diadem = "unison"
 	}
-
-passage:
 
 	epoch = time.Now().UnixNano()
 	phyla = fmt.Sprintf("-%s-v%d", diadem, epoch)
