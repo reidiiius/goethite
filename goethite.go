@@ -19,9 +19,12 @@ func main() {
 		items                int
 	)
 
-	sdr.Schema.Septets["z0"] = strings.Repeat("____ ", 12)
+	quanta := &sdr.Schematic
+	musica := &sdr.Harmonic
 
-	menu = sdr.Signos()
+	quanta.Septets["z0"] = strings.Repeat("____ ", 12)
+
+	menu = quanta.Signos()
 
 	if !sort.StringsAreSorted(menu) {
 		sort.Strings(menu)
@@ -85,12 +88,12 @@ func main() {
 	for i := 1; i < len(cargo); i++ {
 		barge = strings.ToLower(cargo[i])
 
-		if sdr.Absent(barge) {
+		if quanta.Absent(barge) {
 			fmt.Println("\n\t" + barge + " ?")
 			continue
 		}
 
-		pegbox = sdr.Chordophone(barge, diadem)
+		pegbox = musica.Chordophone(barge, diadem)
 
 		fmt.Println("")
 		for j := 0; j < len(pegbox); j++ {
@@ -107,8 +110,9 @@ func main() {
 
 func transcribe(phrase string) string {
 	result := phrase
+	arrows := &sdr.Schematic
 
-	for face, veil := range sdr.Schema.Arcane {
+	for face, veil := range arrows.Arcane {
 		result = strings.ReplaceAll(result, face, veil)
 	}
 

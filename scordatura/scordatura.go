@@ -8,11 +8,20 @@ type Cipher struct {
 }
 
 type Tuning struct {
-	chromium  map[string][]string
-	pitchfork map[string]byte
+	Flagstone map[string][]string
+	Pitchfork map[string]byte
 }
 
-var Schema = Cipher{
+type Clavichord interface {
+	Absent(argot string) bool
+	Signos() []string
+}
+
+type Instrument interface {
+	Chordophone(argot, notes string) []string
+}
+
+var Schematic = Cipher{
 
 	Arcane: map[string]string{
 		"Hg": "9",
@@ -133,9 +142,9 @@ var Schema = Cipher{
 	},
 }
 
-var harmonic = Tuning{
+var Harmonic = Tuning{
 
-	chromium: map[string][]string{
+	Flagstone: map[string][]string{
 		"beadgcf": []string{"Fn", "Cn", "Gn", "Dn", "An", "En", "Bn"},
 
 		"bfbfb": []string{"Bn", "Fn", "Bn", "Fn", "Bn"},
@@ -153,7 +162,7 @@ var harmonic = Tuning{
 		"unison": []string{"Cn"},
 	},
 
-	pitchfork: map[string]byte{
+	Pitchfork: map[string]byte{
 		"Bk": 0,
 		"Cn": 0,
 
@@ -189,25 +198,27 @@ var harmonic = Tuning{
 	},
 }
 
-func Absent(argot string) bool {
-	_, ok := Schema.Septets[argot]
+func (qp *Cipher) Absent(argot string) bool {
+	qp = &Schematic
+	_, ok := qp.Septets[argot]
 
 	return !ok
 }
 
-func Signos() []string {
+func (qp *Cipher) Signos() []string {
+	qp = &Schematic
 	var keystones []string
 
-	for keynotes := range Schema.Septets {
+	for keynotes := range qp.Septets {
 		keystones = append(keystones, keynotes)
 	}
 	return keystones
 }
 
 func HeadStock(argot, tone string) string {
-	spandex := harmonic.pitchfork[tone]
-	temple := Schema.Septets[argot]
-	course := temple[spandex:] + temple[:spandex]
+	pandex := Harmonic.Pitchfork[tone]
+	temple := Schematic.Septets[argot]
+	course := temple[pandex:] + temple[:pandex]
 	return course
 }
 
@@ -224,8 +235,9 @@ func LatticeWork(argot string, tuned []string) []string {
 	return board
 }
 
-func Chordophone(argot, notes string) []string {
-	tuned := harmonic.chromium[notes]
+func (qp *Tuning) Chordophone(argot, notes string) []string {
+	qp = &Harmonic
+	tuned := qp.Flagstone[notes]
 	board := LatticeWork(argot, tuned)
 	return board
 }
