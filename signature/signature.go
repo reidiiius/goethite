@@ -64,7 +64,7 @@ var (
 		"en": "CuTi ____ ____ AuAu ____ ____ TiCu FeMn HgSn ____ SnHg MnFe ",
 		"bn": "FeMn HgSn ____ SnHg MnFe CuTi ____ ____ AuAu ____ ____ TiCu "}
 
-	J17K2 = map[string]string{ // 1426353696157
+	K2J17 = map[string]string{ // 1578340594509
 		"fn": "PbAg ____ AuAu ____ AgPb TiCu FeMn ____ ____ ____ MnFe CuTi ",
 		"cn": "____ ____ ____ MnFe CuTi PbAg ____ AuAu ____ AgPb TiCu FeMn ",
 		"gn": "AuAu ____ AgPb TiCu FeMn ____ ____ ____ MnFe CuTi PbAg ____ ",

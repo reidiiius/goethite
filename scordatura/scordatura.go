@@ -9,64 +9,57 @@ type Databank struct {
 	Pitchfork               map[string]byte
 }
 
-func (qp *Databank) Absent(argot string) bool {
-	qp = &Schematic
-	_, ok := qp.Septets[argot]
+func Absent(argot string) bool {
+	_, ok := Schematic.Septets[argot]
 
 	return !ok
 }
 
-func (qp *Databank) Signos() []string {
-	qp = &Schematic
+func Signos() []string {
 	var stones []string
 
-	for key := range qp.Septets {
+	for key := range Schematic.Septets {
 		stones = append(stones, key)
 	}
 	return stones
 }
 
-func (qp *Databank) Checkup(argot string) bool {
-	qp = &Schematic
-	_, ok := qp.Flagstone[argot]
+func Checkup(argot string) bool {
+	_, ok := Schematic.Flagstone[argot]
 
 	return !ok
 }
 
-func (qp *Databank) Tunings() []string {
-	qp = &Schematic
+func Tunings() []string {
 	var stones []string
 
-	for key := range qp.Flagstone {
+	for key := range Schematic.Flagstone {
 		stones = append(stones, key)
 	}
 	return stones
 }
 
-func (qp *Databank) Chordophone(argot, notes string) []string {
-	qp = &Schematic
-	tuned := qp.Flagstone[notes]
-	board := qp.LatticeWork(argot, tuned)
+func Chordophone(argot, notes string) []string {
+	tuned := Schematic.Flagstone[notes]
+	board := LatticeWork(argot, tuned)
 	return board
 }
 
-func (qp *Databank) LatticeWork(argot string, tuned []string) []string {
-	qp = &Schematic
+func LatticeWork(argot string, tuned []string) []string {
 	var course string
 	var board []string
 	board = append(board, argot)
 
 	for _, tone := range tuned {
-		course = qp.HeadStock(argot, tone)
+		course = HeadStock(argot, tone)
 		board = append(board, course)
 	}
 	return board
 }
 
-func (qp *Databank) HeadStock(argot, tone string) string {
-	qp = &Schematic
-	temple := qp.Septets[argot]
-	pandex := qp.Pitchfork[tone]
+func HeadStock(argot, tone string) string {
+	temple := Schematic.Septets[argot]
+	pandex := Schematic.Pitchfork[tone]
 	course := temple[pandex:] + temple[:pandex]
 	return course
 }
@@ -147,7 +140,6 @@ var Schematic = Databank{
 		"n345":    "____ PuFe ____ ____ CuNp PbAu ____ AuPb NpCu ____ TiSn FePu ",
 		"n5y2":    "HgMn ____ ____ MnHg CuFe ____ ____ AuNp NpAu ____ TiPb FeCu ",
 		"n6x2":    "FeCu HgMn ____ ____ MnHg CuFe PbTi ____ AuNp NpAu ____ ____ ",
-		"j17k2":   "____ ____ ____ MnFe CuTi PbAg ____ AuAu ____ AgPb TiCu FeMn ",
 		"j17y2":   "HgAg ____ ____ ____ CuPb PbCu ____ AuSn ____ AgHg TiFe FeTi ",
 		"j23k6":   "HgHg PuFe ____ UrAg ____ PbAu ____ AuPb ____ ____ TiSn FePu ",
 		"j25y6":   "TiCu FeMn ____ ____ SnHg MnFe CuTi PbAg ____ ____ ____ AgPb ",
@@ -158,6 +150,7 @@ var Schematic = Databank{
 		"j56y7":   "UrCu ____ PbSn ____ AuHg NpFe AgTi ____ FeNp HgAu ____ ____ ",
 		"k12j5":   "____ AgUr ____ FePu HgHg PuFe SnTi ____ ____ PbAu ____ AuPb ",
 		"k17j5":   "TiCu FeMn HgSn ____ SnHg MnFe CuTi ____ ____ AuAu ____ ____ ",
+		"k2j17":   "____ ____ ____ MnFe CuTi PbAg ____ AuAu ____ AgPb TiCu FeMn ",
 		"k25x1":   "____ ____ TiSn FePu HgHg PuFe ____ ____ CuNp PbAu ____ AuPb ",
 		"k26x5":   "HgSn ____ ____ MnFe CuTi PbAg ____ ____ ____ AgPb TiCu FeMn ",
 		"k2j56":   "NpCu ____ ____ FePu HgHg PuFe SnTi ____ CuNp ____ ____ AuPb ",

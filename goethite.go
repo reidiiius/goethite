@@ -23,7 +23,7 @@ func main() {
 
 	qp.Septets["z0"] = strings.Repeat("____ ", 12)
 
-	menu = qp.Signos()
+	menu = sdr.Signos()
 
 	if !sort.StringsAreSorted(menu) {
 		sort.Strings(menu)
@@ -36,13 +36,13 @@ func main() {
 		tabular(menu)
 	}
 
-	pegbox = qp.Tunings()
+	pegbox = sdr.Tunings()
 
 	if !sort.StringsAreSorted(pegbox) {
 		sort.Strings(pegbox)
 	}
 
-	last := len(pegbox) - 1
+	items = len(pegbox) - 1
 
 	barge = strings.ToLower(cargo[1])
 
@@ -59,14 +59,14 @@ func main() {
 		diadem = "eadgbe"
 	}
 
-	if qp.Checkup(diadem) {
+	if sdr.Checkup(diadem) {
 		fmt.Printf("\n\t%s ?\n\n", cargo[0])
 
 		for _, v := range pegbox {
 			fmt.Printf("\t\t%s\n", v)
 		}
 
-		diadem = pegbox[last]
+		diadem = pegbox[items]
 	}
 
 	epoch = time.Now().UnixNano()
@@ -75,12 +75,12 @@ func main() {
 	for i := 1; i < len(cargo); i++ {
 		barge = strings.ToLower(cargo[i])
 
-		if qp.Absent(barge) {
+		if sdr.Absent(barge) {
 			fmt.Println("\n\t" + barge + " ?")
 			continue
 		}
 
-		pegbox = qp.Chordophone(barge, diadem)
+		pegbox = sdr.Chordophone(barge, diadem)
 
 		fmt.Println("")
 		for j := 0; j < len(pegbox); j++ {
