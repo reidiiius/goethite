@@ -36,18 +36,15 @@ func main() {
 		tabular(menu)
 	}
 
-	barge = strings.ToLower(cargo[1])
+	pegbox = qp.Tunings()
 
-	pegbox = []string{
-		"beadgcf",
-		"bfbfb",
-		"cgdae",
-		"dadgad",
-		"dadgbd",
-		"eadgbe",
-		"fkbjdn",
-		"unison",
+	if !sort.StringsAreSorted(pegbox) {
+		sort.Strings(pegbox)
 	}
+
+	last := len(pegbox) - 1
+
+	barge = strings.ToLower(cargo[1])
 
 	signat, _ := regexp.MatchString(`^[jknz]\d+([jknxy]\d+)*$`, barge)
 
@@ -59,25 +56,17 @@ func main() {
 			tabular(menu)
 		}
 	} else {
-		diadem = pegbox[5]
+		diadem = "eadgbe"
 	}
 
-	switch diadem {
-	case pegbox[0]:
-	case pegbox[1]:
-	case pegbox[2]:
-	case pegbox[3]:
-	case pegbox[4]:
-	case pegbox[5]:
-	case pegbox[6]:
-	case pegbox[7]:
-	default:
+	if qp.Checkup(diadem) {
 		fmt.Printf("\n\t%s ?\n\n", cargo[0])
 
 		for _, v := range pegbox {
 			fmt.Printf("\t\t%s\n", v)
 		}
-		diadem = pegbox[7]
+
+		diadem = pegbox[last]
 	}
 
 	epoch = time.Now().UnixNano()

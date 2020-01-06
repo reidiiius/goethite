@@ -18,12 +18,29 @@ func (qp *Databank) Absent(argot string) bool {
 
 func (qp *Databank) Signos() []string {
 	qp = &Schematic
-	var keystones []string
+	var stones []string
 
-	for keynotes := range qp.Septets {
-		keystones = append(keystones, keynotes)
+	for key := range qp.Septets {
+		stones = append(stones, key)
 	}
-	return keystones
+	return stones
+}
+
+func (qp *Databank) Checkup(argot string) bool {
+	qp = &Schematic
+	_, ok := qp.Flagstone[argot]
+
+	return !ok
+}
+
+func (qp *Databank) Tunings() []string {
+	qp = &Schematic
+	var stones []string
+
+	for key := range qp.Flagstone {
+		stones = append(stones, key)
+	}
+	return stones
 }
 
 func (qp *Databank) Chordophone(argot, notes string) []string {
@@ -176,53 +193,35 @@ var Schematic = Databank{
 
 	Flagstone: map[string][]string{
 		"beadgcf": []string{"Fn", "Cn", "Gn", "Dn", "An", "En", "Bn"},
-
-		"bfbfb": []string{"Bn", "Fn", "Bn", "Fn", "Bn"},
-
-		"cgdae": []string{"En", "An", "Dn", "Gn", "Cn"},
-
-		"dadgad": []string{"Dn", "An", "Gn", "Dn", "An", "Dn"},
-
-		"dadgbd": []string{"Dn", "Bn", "Gn", "Dn", "An", "Dn"},
-
-		"eadgbe": []string{"En", "Bn", "Gn", "Dn", "An", "En"},
-
-		"fkbjdn": []string{"Dn", "Bj", "Fk", "Dn", "Bj", "Fk"},
-
-		"unison": []string{"Cn"},
+		"bfbfb":   []string{"Bn", "Fn", "Bn", "Fn", "Bn"},
+		"cgdae":   []string{"En", "An", "Dn", "Gn", "Cn"},
+		"dadgad":  []string{"Dn", "An", "Gn", "Dn", "An", "Dn"},
+		"dadgbd":  []string{"Dn", "Bn", "Gn", "Dn", "An", "Dn"},
+		"eadgbe":  []string{"En", "Bn", "Gn", "Dn", "An", "En"},
+		"fkbjdn":  []string{"Dn", "Bj", "Fk", "Dn", "Bj", "Fk"},
+		"unison":  []string{"Cn"},
 	},
 
 	Pitchfork: map[string]byte{
 		"Bk": 0,
 		"Cn": 0,
-
 		"Ck": 5,
 		"Dj": 5,
-
 		"Dn": 10,
-
 		"Dk": 15,
 		"Ej": 15,
-
 		"En": 20,
 		"Fj": 20,
-
 		"Ek": 25,
 		"Fn": 25,
-
 		"Fk": 30,
 		"Gj": 30,
-
 		"Gn": 35,
-
 		"Gk": 40,
 		"Aj": 40,
-
 		"An": 45,
-
 		"Ak": 50,
 		"Bj": 50,
-
 		"Bn": 55,
 		"Cj": 55,
 	},
