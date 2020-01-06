@@ -3,25 +3,58 @@
 // text to display semigraphic fingerboard diagrams of stringed intruments.
 package scordatura
 
-type Cipher struct {
+type Databank struct {
 	Arcane, Decans, Septets map[string]string
+	Flagstone               map[string][]string
+	Pitchfork               map[string]byte
 }
 
-type Tuning struct {
-	Flagstone map[string][]string
-	Pitchfork map[string]byte
+func (qp *Databank) Absent(argot string) bool {
+	qp = &Schematic
+	_, ok := qp.Septets[argot]
+
+	return !ok
 }
 
-type Clavichord interface {
-	Absent(argot string) bool
-	Signos() []string
+func (qp *Databank) Signos() []string {
+	qp = &Schematic
+	var keystones []string
+
+	for keynotes := range qp.Septets {
+		keystones = append(keystones, keynotes)
+	}
+	return keystones
 }
 
-type Instrument interface {
-	Chordophone(argot, notes string) []string
+func (qp *Databank) Chordophone(argot, notes string) []string {
+	qp = &Schematic
+	tuned := qp.Flagstone[notes]
+	board := qp.LatticeWork(argot, tuned)
+	return board
 }
 
-var Schematic = Cipher{
+func (qp *Databank) LatticeWork(argot string, tuned []string) []string {
+	qp = &Schematic
+	var course string
+	var board []string
+	board = append(board, argot)
+
+	for _, tone := range tuned {
+		course = qp.HeadStock(argot, tone)
+		board = append(board, course)
+	}
+	return board
+}
+
+func (qp *Databank) HeadStock(argot, tone string) string {
+	qp = &Schematic
+	temple := qp.Septets[argot]
+	pandex := qp.Pitchfork[tone]
+	course := temple[pandex:] + temple[:pandex]
+	return course
+}
+
+var Schematic = Databank{
 
 	Arcane: map[string]string{
 		"Hg": "9",
@@ -140,9 +173,6 @@ var Schematic = Cipher{
 		"k1j56y7": "____ AuUr NpSn ____ TiHg FeFe HgTi ____ SnNp UrAu ____ ____ ",
 		"k2j56y7": "NpCu ____ ____ FePu HgHg PuFe SnTi ____ CuNp PbAu ____ ____ ",
 	},
-}
-
-var Harmonic = Tuning{
 
 	Flagstone: map[string][]string{
 		"beadgcf": []string{"Fn", "Cn", "Gn", "Dn", "An", "En", "Bn"},
@@ -196,48 +226,4 @@ var Harmonic = Tuning{
 		"Bn": 55,
 		"Cj": 55,
 	},
-}
-
-func (qp *Cipher) Absent(argot string) bool {
-	qp = &Schematic
-	_, ok := qp.Septets[argot]
-
-	return !ok
-}
-
-func (qp *Cipher) Signos() []string {
-	qp = &Schematic
-	var keystones []string
-
-	for keynotes := range qp.Septets {
-		keystones = append(keystones, keynotes)
-	}
-	return keystones
-}
-
-func HeadStock(argot, tone string) string {
-	pandex := Harmonic.Pitchfork[tone]
-	temple := Schematic.Septets[argot]
-	course := temple[pandex:] + temple[:pandex]
-	return course
-}
-
-func LatticeWork(argot string, tuned []string) []string {
-	var course string
-	var board []string
-
-	board = append(board, argot)
-
-	for _, tone := range tuned {
-		course = HeadStock(argot, tone)
-		board = append(board, course)
-	}
-	return board
-}
-
-func (qp *Tuning) Chordophone(argot, notes string) []string {
-	qp = &Harmonic
-	tuned := qp.Flagstone[notes]
-	board := LatticeWork(argot, tuned)
-	return board
 }

@@ -19,12 +19,11 @@ func main() {
 		items                int
 	)
 
-	quanta := &sdr.Schematic
-	musica := &sdr.Harmonic
+	qp := &sdr.Schematic
 
-	quanta.Septets["z0"] = strings.Repeat("____ ", 12)
+	qp.Septets["z0"] = strings.Repeat("____ ", 12)
 
-	menu = quanta.Signos()
+	menu = qp.Signos()
 
 	if !sort.StringsAreSorted(menu) {
 		sort.Strings(menu)
@@ -78,7 +77,6 @@ func main() {
 		for _, v := range pegbox {
 			fmt.Printf("\t\t%s\n", v)
 		}
-
 		diadem = pegbox[7]
 	}
 
@@ -88,12 +86,12 @@ func main() {
 	for i := 1; i < len(cargo); i++ {
 		barge = strings.ToLower(cargo[i])
 
-		if quanta.Absent(barge) {
+		if qp.Absent(barge) {
 			fmt.Println("\n\t" + barge + " ?")
 			continue
 		}
 
-		pegbox = musica.Chordophone(barge, diadem)
+		pegbox = qp.Chordophone(barge, diadem)
 
 		fmt.Println("")
 		for j := 0; j < len(pegbox); j++ {
@@ -104,18 +102,16 @@ func main() {
 			}
 		}
 	}
-
 	fmt.Println("")
 }
 
 func transcribe(phrase string) string {
 	result := phrase
-	arrows := &sdr.Schematic
+	qp := &sdr.Schematic
 
-	for face, veil := range arrows.Arcane {
+	for face, veil := range qp.Decans {
 		result = strings.ReplaceAll(result, face, veil)
 	}
-
 	return result
 }
 
@@ -126,7 +122,6 @@ func tabular(menu []string) {
 		}
 		fmt.Print("\t", menu[i])
 	}
-
 	fmt.Print("\n\n")
 	os.Exit(0)
 }
